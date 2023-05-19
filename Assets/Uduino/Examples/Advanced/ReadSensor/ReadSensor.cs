@@ -15,8 +15,9 @@ public class ReadSensor : MonoBehaviour
     {
         
         UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
-    }
 
+    }
+    
     void Update()
     {
         UduinoDevice myDevice = UduinoManager.Instance.GetBoard("ImadsUno");
@@ -42,14 +43,14 @@ public class ReadSensor : MonoBehaviour
 
         }
         float dx= value- oldvalue;
-        Debug.Log("dx " + dx);
+       // Debug.Log("dx " + dx);
 
         oldvalue = value;
 
         //Debug.Log(data); // Use the data as you want !
         
         float x= MathF.Abs((float.Parse(data) - 910))/10;
-        Debug.Log(x);
+        Debug.Log(value);
         //  _light.intensity = float.Parse(data) / 200;
         _light.intensity = x;
 

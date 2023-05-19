@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class networkPlaerSpawner : MonoBehaviourPunCallbacks
+public class networkPlayerSpawner : MonoBehaviourPunCallbacks
 {
     private GameObject spawnedPlayerPrefab;
     public override void OnJoinedRoom()

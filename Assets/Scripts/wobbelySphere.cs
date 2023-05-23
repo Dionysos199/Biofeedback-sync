@@ -43,7 +43,7 @@ public class wobbelySphere : MonoBehaviour
         float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
 
         scale = smoother.SmoothValue( mappedValue);
-        _data = scale;
+        _data = normalizedValue;
         verticesArray = new Vector3[(numLongitudes + 1) * (numLatitudes + 1)];
 
         for (int lat = 0; lat <= numLatitudes; lat++)

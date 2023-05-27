@@ -180,7 +180,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 443be454af7cc9d4ebfbee432cabc411, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,7 +277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 409bf720e9924426b9f253cf037a8f4e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4671867782986720273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a77915c3eedc1292b93b18817f4ab2fc, type: 3}
+  m_Script: {fileID: 11500000, guid: ed2910ff0246f2c419637d5c8b49bbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftFlipper: {fileID: 4671867782947024834}
@@ -429,6 +429,8 @@ MonoBehaviour:
   navigationMode: 0
   thrust: 0.1
   rotationSpeed: 10
-  controlDevice: 1
+  controlDevice: 0
   keySteps: 0.1
   sensorValues: {x: 0, y: 0}
+  inputMin: 820
+  inputMax: 980

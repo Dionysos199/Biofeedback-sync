@@ -5967,6 +5967,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 554430789029759609, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4671867782225232645, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -6022,6 +6026,14 @@ PrefabInstance:
     - target: {fileID: 4671867782986720275, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621580855771600772, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024580630968232948, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: sceneViewId
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4671867782986720274, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
@@ -6280,7 +6292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: baudRate
-      value: 115200
+      value: 9600
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: debugLevel

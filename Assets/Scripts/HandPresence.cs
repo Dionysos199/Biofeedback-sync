@@ -15,6 +15,8 @@ public class HandPresence : MonoBehaviour
     private GameObject spawnedHandModel;
     private Animator handAnimator;
 
+
+    public Transform rotator;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,6 @@ public class HandPresence : MonoBehaviour
             {
                 Debug.Log("Did not find corresponding controller model");
             }
-
             spawnedHandModel = Instantiate(handModelPrefab, transform);
             handAnimator = spawnedHandModel.GetComponent<Animator>();
         }
@@ -55,6 +56,7 @@ public class HandPresence : MonoBehaviour
         if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {
             handAnimator.SetFloat("Trigger", triggerValue);
+            //rotator.rotation = Quaternion.Euler(0f,triggerValue*360,0f);
         }
         else
         {

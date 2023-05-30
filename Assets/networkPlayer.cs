@@ -52,7 +52,6 @@ public class networkPlayer : MonoBehaviour
 
         target.position = rigTransform.position;
         target.rotation = rigTransform.rotation;
-
     }
     void UpdateHandAnimation(InputDevice targetDevice , Animator handAnimator)
     {

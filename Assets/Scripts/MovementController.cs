@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using Uduino;
+using Photon.Pun;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+
 #endif
 
 [System.Serializable]
 public class MovementController : MonoBehaviour
 {
+    //public Transform rotator;
+    
+    private PhotonView photonView;
+
     // Physical body settings, no impact on navigation
     [Header("Body")]
     public GameObject leftFlipper;
@@ -52,9 +58,10 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         sensorValues = new Vector2(0.5f, 0.5f);
+        photonView = GetComponent<PhotonView>();
 
 	    if(controlDevice == ControlDevice.Controller)
-            Invoke("TryInitialize", 1);
+        Invoke("TryInitialize",1);
     }
 
     // Update is called once per frame
@@ -99,8 +106,14 @@ public class MovementController : MonoBehaviour
                 {
                     // Left controller
                     leftController.TryGetFeatureValue(CommonUsages.trigger, out values.x);
+                   
                     if(values.x == 0)
+                    {
                         values.x += 0.1f;
+                        //   m_View.RequestOwnership();
+                        // rotator.rotation= Quaternion.Euler(0f, values.x, 0f); 
+
+                    }
                 }
      	        else
   	                Debug.LogError("Left controller is missing");
@@ -110,11 +123,15 @@ public class MovementController : MonoBehaviour
                     // Right controller
                     rightController.TryGetFeatureValue(CommonUsages.trigger, out values.y);
                     if(values.y == 0)
+                    {
                         values.y += 0.1f;
+
+                    }
+                
                 }
                 else
                     Debug.LogError("Right controller is missing");
-
+                Debug.Log("waawwwww  " + values);
                 break;
             case ControlDevice.Keys:
                 if(Input.GetKeyDown(KeyCode.W) && values.x < 1)
@@ -151,6 +168,10 @@ public class MovementController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+            if(values.x >0.1f || values.y>.1f)
+        {
+            photonView.RequestOwnership();
         }
     }
 

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,12 +52,8 @@ MonoBehaviour:
   presentExtentionsMap:
     keys:
     - UduinoDevice_DesktopSerial
-    - UduinoDevice_DesktopBluetoothLE
-    - UduinoDevice_AndroidBluetoothLE
-    - UduinoDevice_AndroidSerial
-    - UduinoDevice_Wifi
-    values: 0101010101
-  ManagerState: 0
+    values: 01
+  ManagerState: 1
   debugLevel: 0
   baudRate: 9600
   limitSendRate: 0

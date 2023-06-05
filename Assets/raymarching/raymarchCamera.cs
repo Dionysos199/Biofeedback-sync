@@ -39,8 +39,22 @@ public class raymarchCamera : SceneViewFilter
     public float _maxDistance;
     public Color _mainColor;
 
-    public Vector4 _sphere1, _box1;
-    public Vector3 _modInterval;
+
+    [SerializeField]
+    private Vector4 _sphere1, _box1, _sphere2;
+    [Header("Signed Distance Field")]
+    public float _box1Round, _boxSphereSmooth, _sphereIntersectSmooth;
+    
+
+
+        private Vector4        _cone1, _hexPrism1, _cylinder1, _torus1;
+
+    //public Vector3 _mandleBrot1;
+    //public Vector4 _mandleBrotColor1;
+ 
+
+    //public Vector2 _torusParam;
+    //public Vector3 _modInterval;
 
 
 
@@ -55,10 +69,29 @@ public class raymarchCamera : SceneViewFilter
         _raymarchMaterial.SetMatrix("_CamFrustum", CamFrustum(_camera));
         _raymarchMaterial.SetMatrix("_CamToWorld", _camera.cameraToWorldMatrix);
         _raymarchMaterial.SetFloat("_maxDistance", _maxDistance);
+        _raymarchMaterial.SetFloat("_box1Round", _box1Round);
+        _raymarchMaterial.SetFloat("_boxSphereSmooth", _boxSphereSmooth);
+        _raymarchMaterial.SetFloat("_sphereIntersectSmooth", _sphereIntersectSmooth);
+
+
+
         _raymarchMaterial.SetVector("_sphere1", _sphere1);
-        _raymarchMaterial.SetVector("_box1", _box1);    
+        _raymarchMaterial.SetVector("_sphere2", _sphere2);
+
+
+        _raymarchMaterial.SetVector("_box1", _box1);
+        _raymarchMaterial.SetVector("_cone1", _cone1);
+        _raymarchMaterial.SetVector("_hexPrism1", _hexPrism1);
+        _raymarchMaterial.SetVector("_cylinder1", _cylinder1);
+        _raymarchMaterial.SetVector("_torus1", _torus1);
+        //_raymarchMaterial.SetVector("_torusParam", _torusParam);
+
+        //_raymarchMaterial.SetVector("_mandleBrotColor1", _mandleBrotColor1);
+        //_raymarchMaterial.SetVector("_mandleBrot1", _mandleBrot1);
+
+
         _raymarchMaterial.SetColor("_mainColor", _mainColor);
-        _raymarchMaterial.SetVector("_modInterval",_modInterval);
+        //_raymarchMaterial.SetVector("_modInterval",_modInterval);
 
         RenderTexture.active = destination;
 

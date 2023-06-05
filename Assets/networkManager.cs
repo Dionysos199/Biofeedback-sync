@@ -40,5 +40,14 @@ public class networkManager : MonoBehaviourPunCallbacks
         Debug.Log("a new player joined the room");
         base.OnPlayerEnteredRoom(newPlayer); 
     }
+    float posA;
 
+    [PunRPC]
+    void ReceiveFloat(float pos)
+    {
+        float AveragePos = (pos + posA) / 2;
+
+    
+        Debug.Log(pos);
+    }
 }

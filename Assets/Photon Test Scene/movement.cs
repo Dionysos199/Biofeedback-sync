@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class movement : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class movement : MonoBehaviour
     {
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         input.Normalize();
+
+        PhotonView pv = GameObject.Find("player3").GetComponent<PhotonView>();
+        pv.RPC("ReceiveFloat", RpcTarget.All, transform.position.x);
+
     }
     private void FixedUpdate()
     {

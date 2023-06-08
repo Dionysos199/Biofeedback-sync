@@ -4,6 +4,9 @@ using Photon.Pun;
 using UnityEngine;
 
 using Photon.Realtime;
+using UnityEngine.UIElements;
+using Uduino;
+
 public class player : MonoBehaviour
 {
     float rotationStep=.1f;
@@ -11,7 +14,21 @@ public class player : MonoBehaviour
     PhotonView pv;
     PhotonView MyPV;
     int ActorNm;
+
+
+    public float inputMin = 950;
+    public float inputMax = 980;
+    public float outputMin = 0;
+    public float outputMax = 5;
+
+
+    private float scale;
+    Smoother smoother = new Smoother(bufferSize: 50);
     // Start is called before the first frame update
+    private void Awake()
+    {
+        UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+    }
     void Start()
     {
 
@@ -19,29 +36,25 @@ public class player : MonoBehaviour
         MyPV = GetComponent<PhotonView>();
        ActorNm  = MyPV.OwnerActorNr;
     }
-
-    // Update is called once per frame
-    void Update()
+    void readSensor(string data, UduinoDevice device)
     {
-        if (Input.GetKeyDown(KeyCode.W) && rotation < 1)
-        {
-            rotation += rotationStep;
-            if(MyPV.IsMine)
-            {
-                sendData();
+        float inputValue = float.Parse(data);
+        // Perform the mapping
+        float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
+        float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
 
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.S) && rotation > 0)
+        scale = smoother.SmoothValue(mappedValue);
+     
+        Debug.Log("mapped value " + mappedValue);
+        rotation = mappedValue;
+        if (MyPV.IsMine)
         {
-            rotation -= rotationStep;
-            if (MyPV.IsMine)
-            {
-                sendData();
+            sendData();
 
-            }
         }
     }
+    // Update is called once per frame
+
     void sendData()
     {
         pv.RPC("ReceiveFloat", RpcTarget.All, rotation,ActorNm);

@@ -169,10 +169,7 @@ public class MovementController : MonoBehaviour
             default:
                 break;
         }
-            if(values.x >0.1f || values.y>.1f)
-        {
-            photonView.RequestOwnership();
-        }
+         
     }
 
     void Move()

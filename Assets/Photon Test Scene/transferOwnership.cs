@@ -8,7 +8,13 @@ public class transferOwnership : MonoBehaviourPun
 {
     private void OnMouseDown()
     {
-        base.photonView.RequestOwnership();
+    }
+    private void OnEnable()
+    {
+        if (this.gameObject.transform.name == "player2")
+        {
+            base.photonView.RequestOwnership();
+        }
     }
 
 }

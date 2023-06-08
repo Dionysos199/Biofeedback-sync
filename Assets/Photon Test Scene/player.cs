@@ -23,7 +23,7 @@ public class player : MonoBehaviour
 
 
     private float scale;
-    Smoother smoother = new Smoother(bufferSize: 50);
+    Smoother smoother = new Smoother(bufferSize: 20);
     // Start is called before the first frame update
     private void Awake()
     {
@@ -43,10 +43,10 @@ public class player : MonoBehaviour
         float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
         float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
 
-        scale = smoother.SmoothValue(mappedValue);
+        float smoothedValue = smoother.SmoothValue(mappedValue);
      
         Debug.Log("mapped value " + mappedValue);
-        rotation = mappedValue;
+        rotation = smoothedValue;
         if (MyPV.IsMine)
         {
             sendData();

@@ -980,7 +980,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8753532706442054592, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
   m_PrefabInstance: {fileID: 530568107}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 825359059}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8407869359978622495, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
   m_PrefabInstance: {fileID: 530568107}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1431001603}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
@@ -1609,6 +1609,14 @@ PrefabInstance:
       propertyPath: OwnershipTransfer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1165149377825106558, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: leftFlipper
+      value: 
+      objectReference: {fileID: 1431001603}
+    - target: {fileID: 1165149377825106558, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: rightFlipper
+      value: 
+      objectReference: {fileID: 825359059}
     - target: {fileID: 4671867781369883447, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1735,7 +1743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626995671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1176, z: 0}
+  m_LocalPosition: {x: -7.608267, y: 0.651812, z: -3.1778414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2122,8 +2130,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763757832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.050889347, y: 0.87310493, z: -0.09332445, w: -0.47580308}
+  m_LocalPosition: {x: 1.961205, y: 0.5047522, z: 1.26505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2203,6 +2211,11 @@ Camera:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3547498166885602161, guid: 91ba1d207e4e9234c9002e02033368bc, type: 3}
   m_PrefabInstance: {fileID: 1747759845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &825359059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4671867782662350803, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+  m_PrefabInstance: {fileID: 530568107}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &900626893
 PrefabInstance:
@@ -3116,7 +3129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1252048019
 Transform:
   m_ObjectHideFlags: 0
@@ -3205,7 +3218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: ManagerState
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: presentExtentionsMap.keys.Array.size
@@ -3321,6 +3334,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1431001603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4671867782947024834, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+  m_PrefabInstance: {fileID: 530568107}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1447962811 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3621981467535291324, guid: ddc38db09f9124241b4b4e9b2b9831eb, type: 3}
@@ -3943,7 +3961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91ba1d207e4e9234c9002e02033368bc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ba1d207e4e9234c9002e02033368bc, type: 3}

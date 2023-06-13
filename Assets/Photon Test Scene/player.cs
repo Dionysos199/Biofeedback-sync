@@ -18,6 +18,7 @@ public class player : MonoBehaviour
 
     public float inputMin = 950;
     public float inputMax = 980;
+
     public float outputMin = 0;
     public float outputMax = 5;
 

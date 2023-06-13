@@ -45,10 +45,6 @@ public class mvtCtrlNetwork : MonoBehaviour
     private float rightTilt = 0.5f;
     private float phaseShift = 0;
 
-    public float inputMin = 820;
-    public float inputMax = 980;
-    float outputMin = 0;
-    float outputMax = 5;
 
     // Start is called before the first frame update
     private void Awake()

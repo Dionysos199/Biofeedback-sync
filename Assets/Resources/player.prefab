@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputMin: 880
   inputMax: 940
-  outputMin: -3
+  outputMin: 2
   outputMax: 3
 --- !u!114 &7685132381334389388
 MonoBehaviour:

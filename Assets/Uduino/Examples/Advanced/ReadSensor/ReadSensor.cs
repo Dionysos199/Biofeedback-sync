@@ -52,7 +52,7 @@ public class ReadSensor : MonoBehaviour
         float x= MathF.Abs((float.Parse(data) - 910))/10;
         Debug.Log(value);
         //  _light.intensity = float.Parse(data) / 200;
-        _light.intensity = x;
+       // _light.intensity = x;
 
         cube.GetComponent<Renderer>().material.color = new Color(x,0,0);
         //leafs.color= new Color(x,.9f, .4f);

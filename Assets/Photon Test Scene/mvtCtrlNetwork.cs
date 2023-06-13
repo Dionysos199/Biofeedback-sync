@@ -28,7 +28,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     [Header("Navigation Settings")]
     public NavigationMode navigationMode;
     public enum NavigationMode { Differential, PhaseShift }
-    public float thrust = 0.1f;
+    public float thrust = 0.7f;
     public float rotationSpeed = 10f;
 
     // Settings for input devices etc.

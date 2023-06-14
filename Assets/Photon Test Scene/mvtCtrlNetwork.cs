@@ -62,8 +62,6 @@ public class mvtCtrlNetwork : MonoBehaviour
         Debug.Log(playerIndex);
     }
 
-
-
     void Move()
     {
 

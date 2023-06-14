@@ -45,6 +45,7 @@ public class player : MonoBehaviour
     void ReadSensor(string data, UduinoDevice device)
     {
         int reading = int.Parse(data);
+        processor.AddValue(reading);
 
         // Process reading
         float value = processor.GetNormalized();

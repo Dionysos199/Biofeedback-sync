@@ -10,30 +10,29 @@ public class levitate : MonoBehaviour
     public float inputMax = 980;
 
     float outputMin = 0;
-   public float outputMax = 20;
+    public float outputMax = 20;
 
     float smoothenedValue;
     public Transform avatar;
+    
     // Start is called before the first frame update
     void Awake()
     {
-
-        UduinoManager.Instance.OnDataReceived += updateHeight; //Create the Delegate
-
+        UduinoManager.Instance.OnDataReceived += updateHeight; // Create the Delegate
     }
 
-    Smoother smoother = new Smoother(bufferSize: 20);
+    SignalProcessor processor = new SignalProcessor(bufferSize: 20);
     public void updateHeight(string data, UduinoDevice device)
     {
-        float inputValue = float.Parse(data);
-        // Perform the mapping
-        float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
-        float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
+        float reading = int.Parse(data);
+        processor.AddValue(reading);
 
-        smoothenedValue = smoother.SmoothValue(mappedValue);
-        avatar.transform.position = new Vector3(0, smoothenedValue, 0);
+        // Process reading
+        float value = processor.GetNormalized();
 
+        avatar.transform.position = new Vector3(0, value, 0);
     }
+
     // Update is called once per frame
     void Update()
     {

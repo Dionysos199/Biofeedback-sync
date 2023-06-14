@@ -34,16 +34,15 @@ public class wobbelySphere : MonoBehaviour
     }
     Vector3[] verticesArray;
 
-    Smoother smoother = new Smoother(bufferSize: 50);
+    SignalProcessor processor = new SignalProcessor(bufferSize: 50);
     void createVertices(string data, UduinoDevice device)
     {
-       float  inputValue = float.Parse(data);
-        // Perform the mapping
-        float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
-        float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
+        int reading = int.Parse(data);
+        processor.AddValue(reading);
 
-        scale = smoother.SmoothValue( mappedValue);
-        _data = normalizedValue;
+        // Process reading
+        float scale = _data = processor.GetNormalized();
+
         verticesArray = new Vector3[(numLongitudes + 1) * (numLatitudes + 1)];
 
         for (int lat = 0; lat <= numLatitudes; lat++)

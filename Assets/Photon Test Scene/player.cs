@@ -8,19 +8,12 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
-    // public float inputMin = 950;
-    // public float inputMax = 980;
-
-    // public float outputMin = 0;
-    // public float outputMax = 5;
-
-    // private float rotationStep=.1f;
-    // private float rotation;
     private PhotonView pv;
     private PhotonView myPV;
     private int actorNum;
 
-    // private float scale;
+    private UduinoManager uduino;
+
     private SignalProcessor processor;
     private float lastMin = 0;
     private float lastMax = 0;
@@ -28,12 +21,7 @@ public class player : MonoBehaviour
     void Awake()
     {
         // Create the Delegate
-        UduinoManager.Instance.OnDataReceived += ReadSensor;
-    }
-
-    void Start()
-    {
-        // Is Start necessary if we already have Awake? Can we just merge them?
+        UduinoManager.Instance.OnDataReceived += OnDataReceived;
 
         // Photon networking setup
         pv = GameObject.Find("Body").GetComponent<PhotonView>();
@@ -42,9 +30,25 @@ public class player : MonoBehaviour
 
         // Instantiate signal processor
         processor = new SignalProcessor(bufferSize: 20);
+
+        // Reset auto-range for sensors
+        Invoke("ResetSensor", 1);
     }
 
-    void ReadSensor(string data, UduinoDevice device)
+    void ResetSensor()
+    {
+        // Reset auto-range for sensors
+        processor.ResetAutoRange();
+        Debug.Log("Sensor range reset.");
+    }
+
+    void Update()
+    {
+        UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
+        UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
+    }
+
+    void OnDataReceived(string data, UduinoDevice device)
     {
         int reading = int.Parse(data);
         processor.AddValue(reading);
@@ -62,7 +66,7 @@ public class player : MonoBehaviour
         var currentAmplitude = lastMax - lastMin;
 
         // Normalize
-        var tilt = processor.GetNormalized(maxAmplitude - currentAmplitude);
+        var tilt = 1 - processor.Normalize(currentAmplitude, (0, maxAmplitude));
         Debug.Log("tilt: " + tilt);
 
         if (myPV.IsMine)

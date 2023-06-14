@@ -7,7 +7,7 @@ using System;
 public class ReadSensor : MonoBehaviour
 {
     public Light _light;
-    public    GameObject cube;
+    public GameObject cube;
     UduinoManager u;
     public Material leafs;
     bool firstMeasure=true;
@@ -32,16 +32,12 @@ public class ReadSensor : MonoBehaviour
     {
         if (firstMeasure)
         {
-            
             value= float.Parse(data);
        
             firstMeasure = false;
         }
-        if (i%5 == 0) {
-
+        if (i % 5 == 0)
              value = float.Parse(data);
-
-        }
         float dx= value- oldvalue;
        // Debug.Log("dx " + dx);
 

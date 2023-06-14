@@ -60,13 +60,17 @@ public class player : MonoBehaviour
         if (peak == SignalProcessor.Peak.Maximum)
             lastMax = processor.GetSmoothed();
 
+        Debug.Log("Peak: " + peak);
+
         // Calculate amplitude
         var (min, max) = processor.GetLimits();
         var maxAmplitude = max - min;
         var currentAmplitude = lastMax - lastMin;
 
         // Normalize
-        var tilt = 1 - processor.Normalize(currentAmplitude, (0, maxAmplitude));
+        Debug.Log("maxAmplitude: " + maxAmplitude);
+        Debug.Log("currentAmplitude: " + currentAmplitude);
+        var tilt = currentAmplitude / maxAmplitude;
         Debug.Log("tilt: " + tilt);
 
         if (myPV.IsMine)

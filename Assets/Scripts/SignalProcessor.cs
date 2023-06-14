@@ -71,18 +71,8 @@ public class SignalProcessor
 
     public float GetNormalized()
     {
-        return Normalize(GetSmoothed(), (_lowerLimit, _upperLimit));
-    }
-
-    // Method overload for int values
-    public float Normalize(int value, (int, int) range)
-    {
-        return Normalize((float)value, ((float, float))range);
-    }
-
-    // Method overload for float values
-    public float Normalize(float value, (float, float) range)
-    {
+        var value = GetSmoothed();
+         
         if (_lowerLimit <= value && value <= _upperLimit)
         {
             return (value - _lowerLimit) / (_upperLimit - _lowerLimit);
@@ -92,6 +82,15 @@ public class SignalProcessor
             Debug.LogError("Sensor reading out of range");
             return 0;
         }
+    }
+
+    public float Invert(float value)
+    {
+        if (value < 1)
+            return 1 - value;
+        else
+            Debug.Log("Only normalized values can be inverted!");
+        return 0;
     }
 
     public Peak DetectPeak()

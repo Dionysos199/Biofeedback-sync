@@ -11,7 +11,7 @@ public class networkPlayerSpawner : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Whale_rigged_by_me", transform.position,transform.rotation);
+        spawnedPlayerPrefab = PhotonNetwork.Instantiate("player", transform.position,transform.rotation);
     }
     public override void OnLeftRoom()
     {

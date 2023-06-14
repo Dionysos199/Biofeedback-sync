@@ -25,16 +25,15 @@ public class player : MonoBehaviour
     private float scale;
     Smoother smoother = new Smoother(bufferSize: 20);
 
-    public GameObject head;
     // Start is called before the first frame update
     private void Awake()
     {
-       // UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+       UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
     }
     void Start()
     {
 
-        pv = head.GetComponent<PhotonView>();
+        pv = GameObject.Find("Bone").GetComponent<PhotonView>();
         MyPV = GetComponent<PhotonView>();
        ActorNm  = MyPV.OwnerActorNr;
     }
@@ -56,7 +55,7 @@ public class player : MonoBehaviour
         }
     }
     // Update is called once per frame
-    private void Update()
+ /*   private void Update()
     {
         if (Input.GetKeyDown("s"))
         {
@@ -75,6 +74,7 @@ public class player : MonoBehaviour
 
         }
     }
+*/
     void sendData()
     {
         if (pv)

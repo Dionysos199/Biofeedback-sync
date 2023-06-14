@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4b43acc48a54262aca57a726bb45e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputMin: 900
-  inputMax: 910
-  outputMin: -1
-  outputMax: 2
+  inputMin: 880
+  inputMax: 940
+  outputMin: 2
+  outputMax: 3
 --- !u!114 &7685132381334389388
 MonoBehaviour:
   m_ObjectHideFlags: 0

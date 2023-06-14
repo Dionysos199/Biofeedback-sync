@@ -8,55 +8,54 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
-    float rotationStep=.1f;
-    float rotation;
-    PhotonView pv;
-    PhotonView MyPV;
-    int ActorNm;
-
-
     public float inputMin = 950;
     public float inputMax = 980;
 
     public float outputMin = 0;
     public float outputMax = 5;
 
+    private float rotationStep=.1f;
+    private float rotation;
+    private PhotonView pv;
+    private PhotonView myPV;
+    private int actorNum;
 
     private float scale;
-    Smoother smoother = new Smoother(bufferSize: 20);
-    // Start is called before the first frame update
-    private void Awake()
+    private SignalProcessor processor;
+
+    void Awake()
     {
-        UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+        // Create the Delegate
+        UduinoManager.Instance.OnDataReceived += ReadSensor;
     }
+
     void Start()
     {
+        // Is Start necessary if we already have Awake? Can we just merge them?
 
+        // Photon networking setup
         pv = GameObject.Find("Body").GetComponent<PhotonView>();
-        MyPV = GetComponent<PhotonView>();
-       ActorNm  = MyPV.OwnerActorNr;
-    }
-    void readSensor(string data, UduinoDevice device)
-    {
-        float inputValue = float.Parse(data);
-        // Perform the mapping
-        float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
-        float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
+        myPV = GetComponent<PhotonView>();
+        actorNum  = myPV.OwnerActorNr;
 
-        float smoothedValue = smoother.SmoothValue(mappedValue);
-     
-        Debug.Log("mapped value " + mappedValue);
-        rotation = smoothedValue;
+        // Instantiate signal processor
+        processor = new SignalProcessor(bufferSize: 20);
+    }
+
+    void ReadSensor(string data, UduinoDevice device)
+    {
+        int reading = int.Parse(data);
+
+        // Process reading
+        float value = processor.GetNormalized();
+        Debug.Log("value: " + value);
+
         if (MyPV.IsMine)
-        {
-            sendData();
-
-        }
+            sendFloat();
     }
-    // Update is called once per frame
 
-    void sendData()
+    void sendFloat(float value)
     {
-        pv.RPC("ReceiveFloat", RpcTarget.All, rotation,ActorNm);
+        pv.RPC("ReceiveFloat", RpcTarget.All, value, ActorNm);
     }
 }

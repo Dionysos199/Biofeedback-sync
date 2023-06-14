@@ -9,7 +9,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class mvtCtrlNetwork : MonoBehaviour
 {
-    //public Transform rotator;
+    // public Transform rotator;
 
     private PhotonView photonView;
 
@@ -40,23 +40,13 @@ public class mvtCtrlNetwork : MonoBehaviour
     private float rightTilt = 0.5f;
     private float phaseShift = 0;
 
-
-    // Start is called before the first frame update
-    private void Awake()
-    {
-
-    }
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //ReadInput();
+        // ReadInput();
         Move();
     }
+    
     [PunRPC]
     void ReceiveFloat(float rotation,int playerIndex)
     {

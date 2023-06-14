@@ -32,13 +32,14 @@ public class SignalProcessor
     }
 
     // Method overload for int values
-    public float Normalize(int value)
+    public void AddValue(int value)
     {
-        return Normalize((float)value);
+        AddValue((float)value);
     }
 
-    public float Normalize(float value)
+    public void AddValue(float value)
     {
+        // Adjust range automatically
         if(_autoRange)
         {
             while(value < _lowerLimit)
@@ -48,9 +49,19 @@ public class SignalProcessor
                 upperLimit++;
         }
 
-        if (lowerLimit <= value && value <= upperLimit)
+        // Add value to queue
+        _buffer.Enqueue(value);
+        if (_buffer.Count > _bufferSize)
+            _buffer.Dequeue();
+    }
+
+    public float GetNormalized()
+    {
+        var value = GetSmoothed();
+        
+        if (_lowerLimit <= value && value <= _upperLimit)
         {
-            return (value - lowerLimit) / (upperLimit - lowerLimit);
+            return (value - _lowerLimit) / (_upperLimit - _lowerLimit);
         }
         else
         {
@@ -59,20 +70,7 @@ public class SignalProcessor
         }
     }
 
-    // Method overload for int values
-    public void AddValue(int value)
-    {
-        AddValue((float)value);
-    }
-
-    public void AddValue(float value)
-    {
-        _buffer.Enqueue(value);
-        if (_buffer.Count > _bufferSize)
-            _buffer.Dequeue();
-    }
-
-    public float GetSmoothed()
+    private float GetSmoothed()
     {
         float sum = 0;
         foreach (var value in buffer)

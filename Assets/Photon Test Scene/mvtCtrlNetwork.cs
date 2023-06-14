@@ -5,13 +5,8 @@ using UnityEngine.XR;
 using Uduino;
 using Photon.Pun;
 using static UnityEngine.Rendering.DebugUI;
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditorInternal;
 
-#endif
 
-[System.Serializable]
 public class mvtCtrlNetwork : MonoBehaviour
 {
     //public Transform rotator;

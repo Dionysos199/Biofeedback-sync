@@ -1,18 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-using Uduino;
 using Photon.Pun;
 using static UnityEngine.Rendering.DebugUI;
 
-
-public class mvtCtrlNetwork : MonoBehaviour
+public class MovementControlNetwork : MonoBehaviour
 {
-    // public Transform rotator;
-
-    private PhotonView photonView;
-
     // Physical body settings, no impact on navigation
     [Header("Body")]
     public GameObject leftFlipper;
@@ -21,29 +14,18 @@ public class mvtCtrlNetwork : MonoBehaviour
 
     // Navigation control
     [Header("Navigation Settings")]
-    public NavigationMode navigationMode;
-    public enum NavigationMode { Differential, PhaseShift }
     public float thrust = 0.7f;
     public float rotationSpeed = 10f;
-
-    // Settings for input devices etc.
-    [Header("Developer Settings")]
-    public ControlDevice controlDevice;
-    public enum ControlDevice { Controller, Keys, PhysicalSensor }
-    [HideInInspector] public float keySteps = 0.1f;
-    [HideInInspector] public Vector2 sensorValues;
-
-    private InputDevice leftController;
-    private InputDevice rightController;
 
     private float leftTilt = 0.5f;
     private float rightTilt = 0.5f;
     private float phaseShift = 0;
 
+    private PhotonView photonView;
+
     // Update is called once per frame
     void Update()
     {
-        // ReadInput();
         Move();
     }
     
@@ -96,4 +78,3 @@ public class mvtCtrlNetwork : MonoBehaviour
         transform.Translate(Vector3.forward * thrust * Time.deltaTime);
     }
 }
-

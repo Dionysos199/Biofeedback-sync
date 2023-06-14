@@ -8,20 +8,22 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
-    public float inputMin = 950;
-    public float inputMax = 980;
+    // public float inputMin = 950;
+    // public float inputMax = 980;
 
-    public float outputMin = 0;
-    public float outputMax = 5;
+    // public float outputMin = 0;
+    // public float outputMax = 5;
 
-    private float rotationStep=.1f;
-    private float rotation;
+    // private float rotationStep=.1f;
+    // private float rotation;
     private PhotonView pv;
     private PhotonView myPV;
     private int actorNum;
 
-    private float scale;
+    // private float scale;
     private SignalProcessor processor;
+    private float lastMin = 0;
+    private float lastMax = 0;
 
     void Awake()
     {
@@ -47,16 +49,28 @@ public class player : MonoBehaviour
         int reading = int.Parse(data);
         processor.AddValue(reading);
 
-        // Process reading
-        float value = processor.GetNormalized();
-        Debug.Log("value: " + value);
+        // Detect peaks
+        SignalProcessor.Peak peak = processor.DetectPeak();
+        if (peak == SignalProcessor.Peak.Minimum)
+            lastMin = processor.GetSmoothed();
+        if (peak == SignalProcessor.Peak.Maximum)
+            lastMax = processor.GetSmoothed();
 
-        if (MyPV.IsMine)
-            sendFloat();
+        // Calculate amplitude
+        var (min, max) = processor.GetLimits();
+        var maxAmplitude = max - min;
+        var currentAmplitude = lastMax - lastMin;
+
+        // Normalize
+        var tilt = processor.GetNormalized(maxAmplitude - currentAmplitude);
+        Debug.Log("tilt: " + tilt);
+
+        if (myPV.IsMine)
+            sendFloat(tilt);
     }
 
     void sendFloat(float value)
     {
-        pv.RPC("ReceiveFloat", RpcTarget.All, value, ActorNm);
+        pv.RPC("ReceiveFloat", RpcTarget.All, value, actorNum);
     }
 }

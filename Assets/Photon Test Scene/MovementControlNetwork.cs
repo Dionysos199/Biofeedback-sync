@@ -19,7 +19,6 @@ public class MovementControlNetwork : MonoBehaviour
 
     private float leftTilt = 0.5f;
     private float rightTilt = 0.5f;
-    private float phaseShift = 0;
 
     private PhotonView photonView;
 
@@ -30,44 +29,29 @@ public class MovementControlNetwork : MonoBehaviour
     }
     
     [PunRPC]
-    void ReceiveFloat(float rotation,int playerIndex)
+    void ReceiveFloat(float tilt, int playerIndex)
     {
+        Debug.Log("playerIndex: " + playerIndex);
+
         if (playerIndex == 1)
         {
-            Debug.Log("leftRotation  " + rotation);
-            leftTilt = rotation;
+            Debug.Log("leftTilt: " + tilt);
+            leftTilt = tilt;
         }
         if (playerIndex == 2)
         {
-            rightTilt = rotation;
+            Debug.Log("rightTilt: " + tilt);
+            rightTilt = tilt;
         }
-        Debug.Log(playerIndex);
     }
 
     void Move()
     {
-
-        float pitch = 0;
-        float yaw = 0;
-
         // Set rotation
-        switch (navigationMode)
-        {
-            case NavigationMode.Differential:
-                pitch = 1 - leftTilt - rightTilt;
-                yaw = rightTilt - leftTilt;
+        float pitch = 1 - leftTilt - rightTilt;
+        float yaw = rightTilt - leftTilt;
 
-                break;
-            case NavigationMode.PhaseShift:
-                pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
-                yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
-
-                break;
-            default:
-                break;
-        }
-
-        // Tilt flippers
+        // Tilt flippers (only for visual feedback, no effect on navigation)
         leftFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch + yaw)) * tiltRange, Vector3.right);
         rightFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch - yaw)) * tiltRange, Vector3.right);
 

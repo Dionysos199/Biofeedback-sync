@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Uduino;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
@@ -69,8 +71,21 @@ public class CameraController : SceneViewFilter
             return r_camera;
         }
     }
-    
-    private void OnRenderImage(RenderTexture source, RenderTexture destination)
+
+
+    void Awake()
+    {
+
+        UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
+
+    }
+    public void OnDataReceived(string data, UduinoDevice device)
+    {
+
+        float value = float.Parse(data);
+        raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-800)/200,0));
+    }
+        private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (!raymarchingMaterial)
         {
@@ -84,7 +99,7 @@ public class CameraController : SceneViewFilter
 
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
-        raymarchingMaterial.SetColor("r_mainColor", r_color);
+       // raymarchingMaterial.SetColor("r_mainColor", r_color);
         raymarchingMaterial.SetVector("r_sphere", r_sphere);
         raymarchingMaterial.SetVector("r_box", r_box);
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);

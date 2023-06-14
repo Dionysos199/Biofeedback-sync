@@ -110,7 +110,7 @@ public class mvtCtrlNetwork : MonoBehaviour
         transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
 
         // Move forward
-        transform.Translate(Vector3.forward * thrust * Time.deltaTime);
+        transform.Translate(-Vector3.up * thrust * Time.deltaTime);
     }
 }
 

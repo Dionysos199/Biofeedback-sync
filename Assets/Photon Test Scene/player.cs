@@ -15,7 +15,6 @@ public class player : MonoBehaviour
     PhotonView MyPV;
     int ActorNm;
 
-
     public float inputMin = 950;
     public float inputMax = 980;
 
@@ -25,15 +24,17 @@ public class player : MonoBehaviour
 
     private float scale;
     Smoother smoother = new Smoother(bufferSize: 20);
+
+    public GameObject head;
     // Start is called before the first frame update
     private void Awake()
     {
-        UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+       // UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
     }
     void Start()
     {
 
-        pv = GameObject.Find("Body").GetComponent<PhotonView>();
+        pv = head.GetComponent<PhotonView>();
         MyPV = GetComponent<PhotonView>();
        ActorNm  = MyPV.OwnerActorNr;
     }
@@ -55,9 +56,35 @@ public class player : MonoBehaviour
         }
     }
     // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyDown("s"))
+        {
+            rotation -= .1f;
+            Debug.Log("rotation");
 
+        }
+        if (Input.GetKeyDown("w"))
+        {
+            rotation += .1f;
+
+        }
+        if (MyPV.IsMine)
+        {
+            sendData();
+
+        }
+    }
     void sendData()
     {
-        pv.RPC("ReceiveFloat", RpcTarget.All, rotation,ActorNm);
+        if (pv)
+        {
+            pv.RPC("ReceiveFloat", RpcTarget.All, rotation, ActorNm);
+
+        }
+        else
+        {
+            Debug.Log("photon view object was not found hahaha");
+        }
     }
 }

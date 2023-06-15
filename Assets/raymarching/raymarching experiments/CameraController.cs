@@ -83,7 +83,7 @@ public class CameraController : SceneViewFilter
     {
 
         float value = float.Parse(data);
-        raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-800)/200,0));
+        raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-200)/500,0));
     }
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {

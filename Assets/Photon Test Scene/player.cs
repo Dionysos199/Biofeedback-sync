@@ -50,31 +50,25 @@ public class player : MonoBehaviour
 
     void OnDataReceived(string data, UduinoDevice device)
     {
+        // Read sensor value
         int reading = int.Parse(data);
         processor.AddValue(reading);
 
         // Detect peaks
         SignalProcessor.Peak peak = processor.DetectPeak();
         if (peak == SignalProcessor.Peak.Minimum)
-            lastMin = processor.GetSmoothed();
+            lastMin = processor.GetNormalized();
         if (peak == SignalProcessor.Peak.Maximum)
-            lastMax = processor.GetSmoothed();
+            lastMax = processor.GetNormalized();
 
-        Debug.Log("Peak: " + peak);
+        // Debug.Log("Peak: " + peak);
 
         // Calculate amplitude
-        var (min, max) = processor.GetLimits();
-        var maxAmplitude = max - min;
-        var currentAmplitude = lastMax - lastMin;
-
-        // Normalize
-        Debug.Log("maxAmplitude: " + maxAmplitude);
-        Debug.Log("currentAmplitude: " + currentAmplitude);
-        var tilt = currentAmplitude / maxAmplitude;
-        Debug.Log("tilt: " + tilt);
+        var amplitude = lastMax - lastMin;
+        Debug.Log("amplitude: " + amplitude);
 
         if (myPV.IsMine)
-            sendFloat(tilt);
+            sendFloat(amplitude);
     }
 
     void sendFloat(float value)

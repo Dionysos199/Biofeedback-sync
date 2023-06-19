@@ -33,7 +33,13 @@ public class SignalProcessor
 
     public void ResetAutoRange()
     {
-        _lowerLimit = _upperLimit = _buffer.LastOrDefault();
+        // Use soft buffer reset for moving average-based min/max:
+        _lowerLimit = _upperLimit = GetSmoothed();
+
+        // Use hard buffer reset for reading-based min/max:
+        // while (_buffer.Count > 1)
+        //     _buffer.Dequeue();
+        // _lowerLimit = _upperLimit = _buffer.LastOrDefault();
     }
 
     // Method overload for int values
@@ -44,20 +50,21 @@ public class SignalProcessor
 
     public void AddValue(float value)
     {
-        // Adjust range automatically
-        if(_autoRange)
-        {
-            while(value < _lowerLimit)
-                _lowerLimit--;
-
-            while(value > _upperLimit)
-                _upperLimit++;
-        }
-
         // Add value to queue
         _buffer.Enqueue(value);
         if (_buffer.Count > _bufferSize)
             _buffer.Dequeue();
+
+        // Update range automatically
+        if(_autoRange)
+        {
+            var smoothedValue = GetSmoothed();
+
+            if (smoothedValue < _lowerLimit)
+                _lowerLimit = smoothedValue;
+            else if (smoothedValue > _upperLimit)
+                _upperLimit = smoothedValue;
+        }  
     }
 
     public float GetSmoothed()
@@ -72,24 +79,25 @@ public class SignalProcessor
     public float GetNormalized()
     {
         var value = GetSmoothed();
-         
-        if (_lowerLimit <= value && value <= _upperLimit)
-        {
-            return (value - _lowerLimit) / (_upperLimit - _lowerLimit);
-        }
-        else
-        {
-            Debug.LogError("Sensor reading out of range");
+
+        // Prevent division errors after range reset
+        if (_lowerLimit == _upperLimit)
             return 0;
-        }
+
+        if (_lowerLimit <= value && value <= _upperLimit)
+            return (value - _lowerLimit) / (_upperLimit - _lowerLimit);
+        else
+            // Should only happen when auto-ranging is turned off
+            Debug.LogError("Sensor reading out of range.");
+        return 0;
     }
 
     public float Invert(float value)
     {
-        if (value < 1)
+        if (0 <= value && value <= 1)
             return 1 - value;
         else
-            Debug.Log("Only normalized values can be inverted!");
+            Debug.Log("Only normalized values can be inverted.");
         return 0;
     }
 

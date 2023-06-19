@@ -29,7 +29,7 @@ public class player : MonoBehaviour
         actorNum  = myPV.OwnerActorNr;
 
         // Instantiate signal processor
-        processor = new SignalProcessor(bufferSize: 20);
+        processor = new SignalProcessor(bufferSize: 10, invertReadings: true);
 
         // Reset auto-range for sensors
         Invoke("ResetSensor", 1);
@@ -38,7 +38,7 @@ public class player : MonoBehaviour
     void ResetSensor()
     {
         // Reset auto-range for sensors
-        processor.ResetAutoRange();
+        processor.RequestAutoRangeReset();
         Debug.Log("Sensor range reset.");
     }
 
@@ -54,17 +54,8 @@ public class player : MonoBehaviour
         int reading = int.Parse(data);
         processor.AddValue(reading);
 
-        // Detect peaks
-        SignalProcessor.Peak peak = processor.DetectPeak();
-        if (peak == SignalProcessor.Peak.Minimum)
-            lastMin = processor.GetNormalized();
-        if (peak == SignalProcessor.Peak.Maximum)
-            lastMax = processor.GetNormalized();
-
-        // Debug.Log("Peak: " + peak);
-
         // Calculate amplitude
-        var amplitude = lastMax - lastMin;
+        var amplitude = processor.GetAmplitude();
         Debug.Log("amplitude: " + amplitude);
 
         if (myPV.IsMine)

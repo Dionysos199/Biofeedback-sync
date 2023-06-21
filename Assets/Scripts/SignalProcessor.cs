@@ -67,17 +67,18 @@ public class SignalProcessor
             else if (smoothedValue > _upperLimit)
                 _upperLimit = smoothedValue;
         }
+
+        // Run peak detection
+        DetectPeak();
     }
 
     public float GetAmplitude()
     {
-        DetectPeak();
         return  _lastMax - _lastMin;
     }
 
     public float GetFrequency()
     {
-        DetectPeak();
         return _lastMaxCount / _maxCount;
     }
 

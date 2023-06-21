@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SignalProcessor
@@ -9,29 +8,27 @@ public class SignalProcessor
     private float _lowerLimit;
     private float _upperLimit;
 
-    // Signal inversion
-    private bool _invertReadings;
-
-    // Buffer
+    // Basic signal processing
     private int _bufferSize;
     private Queue<float> _buffer;
+    private bool _invertReadings;
 
-    // Peak detection and waveform processing
+    // Waveform processing
     private float _lastValue;
     private float _lastDiff;
     private float _lastMin;
     private float _lastMax;
+    private int _frequencyCount;
+    private int _maxCount;
+    private int _lastMaxCount;
 
     public SignalProcessor(int bufferSize, bool invertReadings = false)
     {
-        // Configure buffer
+        // Configuration
         _bufferSize = bufferSize;
         _buffer = new Queue<float>();
-
-        // Configure signal inversion
         _invertReadings = invertReadings;
 
-        // Configure auto-ranging
         ResetAutoRange(0);
     }
 
@@ -51,10 +48,12 @@ public class SignalProcessor
     {
         // Add value to queue
         _buffer.Enqueue(value);
-        if (_buffer.Count > _bufferSize)
+
+        // Remove surplus item(s) from buffer
+        while (_buffer.Count > _bufferSize)
             _buffer.Dequeue();
 
-        // Update range automatically        
+        // Update range boundaries
         var smoothedValue = GetSmoothed();
         if (_resetAutoRange)
         {
@@ -68,6 +67,24 @@ public class SignalProcessor
                 _upperLimit = smoothedValue;
         }
     }
+
+    public float GetAmplitude()
+    {
+        DetectPeak();
+        return  _lastMax - _lastMin;
+    }
+
+    public float GetFrequency()
+    {
+        DetectPeak();
+        return _lastMaxCount / _maxCount;
+    }
+
+    // public float GetPhaseShift()
+    // {
+    //     // DetectPeak();
+    //     // return  _lastMax - _lastMin;
+    // }
 
     public float GetNormalized()
     {
@@ -91,12 +108,6 @@ public class SignalProcessor
             Debug.LogError("Sensor reading out of range.");
             return 0;
         }
-    }
-
-    public float GetAmplitude()
-    {
-        DetectPeak();
-        return  _lastMax - _lastMin;
     }
 
     private float GetSmoothed()
@@ -125,18 +136,36 @@ public class SignalProcessor
             {
                 // Local minimum
                 _lastMin = value;
-                Debug.Log("Local Minimum: diff: " + diff + ", lastDiff: " + _lastDiff);
+                Debug.Log("Local Minimum");
+
+                UpdateFrequency();
             }
             else if (diff < 0 && _lastDiff > 0)
             {
                 // Local maximum
                 _lastMax = value;
-                Debug.Log("Local Maximum: diff: " + diff + ", lastDiff: " + _lastDiff);
+                Debug.Log("Local Maximum");
+
+                UpdateFrequency();
             }
 
             _lastValue = value;
             _lastDiff = diff;
         }
+        _frequencyCount++;
+    }
+
+    private void UpdateFrequency()
+    {
+        // Save current count
+        _lastMaxCount = _frequencyCount;
+
+        // Update absolute maximum if necessary
+        if (_lastMaxCount > _maxCount)
+            _maxCount = _lastMaxCount;
+
+        // Reset frequency counter
+        _frequencyCount = 0;
     }
 
     private void ResetAutoRange(float value)
@@ -155,6 +184,9 @@ public class SignalProcessor
         _lastDiff = 0;
         _lastMin = 0;
         _lastMax = 0;
+        _frequencyCount = 0;
+        _maxCount = 0;
+        _lastMaxCount = 0;
 
         // Unset reset flag
         _resetAutoRange = false;

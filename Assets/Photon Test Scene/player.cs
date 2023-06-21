@@ -15,8 +15,6 @@ public class player : MonoBehaviour
     private UduinoManager uduino;
 
     private SignalProcessor processor;
-    private float lastMin = 0;
-    private float lastMax = 0;
 
     void Awake()
     {

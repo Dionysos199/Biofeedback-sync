@@ -8,8 +8,8 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
-    private PhotonView pv;
-    private PhotonView myPV;
+    private PhotonView bodyPV;
+    private PhotonView playerPV;
     private int actorNum;
 
     private UduinoManager uduino;
@@ -22,9 +22,9 @@ public class player : MonoBehaviour
         UduinoManager.Instance.OnDataReceived += OnDataReceived;
 
         // Photon networking setup
-        pv = GameObject.Find("Body").GetComponent<PhotonView>();
-        myPV = GetComponent<PhotonView>();
-        actorNum  = myPV.OwnerActorNr;
+        bodyPV = GameObject.Find("Body").GetComponent<PhotonView>();
+        playerPV = GetComponent<PhotonView>();
+        actorNum  = playerPV.OwnerActorNr;
 
         // Instantiate signal processor
         processor = new SignalProcessor(bufferSize: 10, invertReadings: true);
@@ -56,12 +56,29 @@ public class player : MonoBehaviour
         var amplitude = processor.GetAmplitude();
         Debug.Log("amplitude: " + amplitude);
 
-        if (myPV.IsMine)
-            sendFloat(amplitude);
+        // Calculate phase shift coefficient
+        var coeff = processor.GetPhaseShiftCoeff();
+        Debug.Log("coeff: " + coeff);
+
+        if (playerPV.IsMine)
+            // sendFloat(amplitude, bodyPV);
+            sendFloat(coeff, playerPV);
     }
 
-    void sendFloat(float value)
+    [PunRPC]
+    void ReceiveFloat(float coeff, int actorNum)
     {
-        pv.RPC("ReceiveFloat", RpcTarget.All, value, actorNum);
+        // Calculate phase shift if I have ownership of the Body
+        if (bodyPV.IsMine)
+        {
+            var phaseShift = processor.GetPhaseShift(coeff);
+            Debug.Log("phaseShift: " + phaseShift);
+            sendFloat(phaseShift, bodyPV);
+        }
+    }
+
+    void sendFloat(float value, PhotonView target)
+    {
+        target.RPC("ReceiveFloat", RpcTarget.All, value, actorNum);
     }
 }

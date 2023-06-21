@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SignalProcessor
@@ -53,8 +54,8 @@ public class SignalProcessor
         while (_buffer.Count > _bufferSize)
             _buffer.Dequeue();
 
-        // Update range boundaries
-        var smoothedValue = GetSmoothed();
+        // Update or reset range boundaries
+        var smoothedValue = _buffer.Average();
         if (_resetAutoRange)
         {
             ResetAutoRange(smoothedValue);
@@ -82,13 +83,19 @@ public class SignalProcessor
 
     // public float GetPhaseShift()
     // {
+        // This method estimates the phase shift between two
+        // waveform input signals by projecting the readings
+        //  to shifted cosine waves
+
+
+
     //     // DetectPeak();
     //     // return  _lastMax - _lastMin;
     // }
 
     public float GetNormalized()
     {
-        var value = GetSmoothed();
+        var value = _buffer.Average();
 
         // Prevent division errors after range reset
         if (_lowerLimit == _upperLimit)
@@ -104,19 +111,10 @@ public class SignalProcessor
         }
         else
         {
-            // Should only happen when auto-ranging is turned off/before first reset
-            Debug.LogError("Sensor reading out of range.");
+            // Should only happen before first auto-range reset
+            Debug.LogWarning("Sensor reading out of range.");
             return 0;
         }
-    }
-
-    private float GetSmoothed()
-    {
-        float sum = 0;
-        foreach (var value in _buffer)
-            sum += value;
-
-        return sum / _buffer.Count;
     }
 
     private void DetectPeak()
@@ -170,16 +168,13 @@ public class SignalProcessor
 
     private void ResetAutoRange(float value)
     {
-        // Use soft buffer reset for moving average-based min/max:
+        // Reset range boundaries
         _lowerLimit = _upperLimit = value;
 
-        // Use hard buffer reset for reading-based min/max:
-        // while (_buffer.Count > 0)
-        //     _buffer.Dequeue();
-        // _lowerLimit = _upperLimit = _buffer.LastOrDefault();
+        // Reset buffer if using reading-based min/max to prevent out-of-bound readings:
+        // _buffer.Clear();
 
-        // Reset peak detection and waveform processing, too.
-        // These functions deal only with normalized values!
+        // Reset waveform processing
         _lastValue = 0;
         _lastDiff = 0;
         _lastMin = 0;

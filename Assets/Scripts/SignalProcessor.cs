@@ -81,17 +81,24 @@ public class SignalProcessor
         return _lastMaxCount / _maxCount;
     }
 
-    // public float GetPhaseShift()
-    // {
-        // This method estimates the phase shift between two
-        // waveform input signals by projecting the readings
-        //  to shifted cosine waves
+    public float GetPhaseShift(float secondNormalizedReading)
+    {
+        var value = GetNormalized();
 
+        // This method estimates the phase shift between two waveform
+        // input signals by projecting the readings onto shifted cosine
+        // waves of type f(x) = 0.5 * cos(x - a) + 0.5
 
+        float a = Mathf.Acos(2 * value - 1);
+        float b = Mathf.Acos(2 * secondNormalizedReading - 1);
+        float phaseShift = 360 * (b - a) / (2 * Mathf.PI);
 
-    //     // DetectPeak();
-    //     // return  _lastMax - _lastMin;
-    // }
+        if (-180 <= phaseShift && phaseShift <= 180)
+            return phaseShift;
+        else
+            Debug.LogError("Phase shift out of range [-180; 180]");
+        return 0;
+    }
 
     public float GetNormalized()
     {

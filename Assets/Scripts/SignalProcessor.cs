@@ -79,7 +79,7 @@ public class SignalProcessor
 
     public float GetFrequency()
     {
-        return _lastMaxCount / _maxCount;
+        return 1 - ((float)_lastMaxCount / (float)_maxCount);
     }
 
     public float GetPhaseShift(float secondCoeff)
@@ -175,6 +175,7 @@ public class SignalProcessor
             _lastDiff = diff;
         }
         _frequencyCount++;
+        Debug.Log(_frequencyCount);
     }
 
     private void UpdateFrequency()
@@ -204,7 +205,7 @@ public class SignalProcessor
         _lastMin = 0;
         _lastMax = 0;
         _frequencyCount = 0;
-        _maxCount = 0;
+        _maxCount = 1;
         _lastMaxCount = 0;
 
         // Unset reset flag

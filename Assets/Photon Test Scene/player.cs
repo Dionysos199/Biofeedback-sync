@@ -71,7 +71,7 @@ public class player : MonoBehaviour
             switch (signalProcessing)
             {
                 case SignalProcessing.Frequency:
-
+                    sendFloat(frequency, playerPV);
                     break;
                 case SignalProcessing.PhaseShift:
                     sendFloat(coeff, playerPV);

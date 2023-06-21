@@ -81,23 +81,39 @@ public class SignalProcessor
         return _lastMaxCount / _maxCount;
     }
 
-    public float GetPhaseShift(float secondNormalizedReading)
+    public float GetPhaseShift(float secondCoeff)
     {
-        var value = GetNormalized();
+        // Estimate the phase shift between two waveforms by projecting
+        // the normalized readings onto shifted cosine waves of type
+        // f(x) = 0.5 * cos(x - a) + 0.5.
+        // The result is returned as a normalized value between 0 and 1.
 
-        // This method estimates the phase shift between two waveform
-        // input signals by projecting the readings onto shifted cosine
-        // waves of type f(x) = 0.5 * cos(x - a) + 0.5
+        var coeff = GetPhaseShiftCoeff();
+        float phaseShift = (secondCoeff - coeff) / (4 * Mathf.PI) + 0.5f;
 
-        float a = Mathf.Acos(2 * value - 1);
-        float b = Mathf.Acos(2 * secondNormalizedReading - 1);
-        float phaseShift = 360 * (b - a) / (2 * Mathf.PI);
-
-        if (-180 <= phaseShift && phaseShift <= 180)
+        if (0 <= phaseShift && phaseShift <= 1)
             return phaseShift;
         else
-            Debug.LogError("Phase shift out of range [-180; 180]");
+            Debug.LogError("Phase shift out of range [0; 1]");
         return 0;
+    }
+
+    public float GetPhaseShiftCoeff()
+    {
+        // Calculate coefficient a from projected cosine wave of
+        // type f(x) = 0.5 * cos(x - a) + 0.5 based on normalized
+        // reading as x
+
+        var value = GetNormalized();
+        var diff = value - _lastValue;
+        _lastValue = value;
+
+        var coeff = Mathf.Acos(2 * value - 1);
+
+        if (diff >= 0)
+            return coeff;
+        else
+            return -coeff;
     }
 
     public float GetNormalized()

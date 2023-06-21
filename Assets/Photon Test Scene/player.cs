@@ -8,6 +8,8 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
+    public SignalProcessing signalProcessing;
+    public enum SignalProcessing { Amplitude, Frequency, PhaseShift }
     private PhotonView bodyPV;
     private PhotonView playerPV;
     private int actorNum;
@@ -56,13 +58,30 @@ public class player : MonoBehaviour
         var amplitude = processor.GetAmplitude();
         Debug.Log("amplitude: " + amplitude);
 
+        // Calculate frequency
+        var frequency = processor.GetFrequency();
+        Debug.Log("frequency: " + frequency);
+
         // Calculate phase shift coefficient
         var coeff = processor.GetPhaseShiftCoeff();
         Debug.Log("coeff: " + coeff);
 
         if (playerPV.IsMine)
-            // sendFloat(amplitude, bodyPV);
-            sendFloat(coeff, playerPV);
+        {
+            switch (signalProcessing)
+            {
+                case SignalProcessing.Frequency:
+
+                    break;
+                case SignalProcessing.PhaseShift:
+                    sendFloat(coeff, playerPV);
+                    break;
+                default:
+                    // Amplitude
+                    sendFloat(amplitude, bodyPV);
+                    break;
+            }
+        }
     }
 
     [PunRPC]

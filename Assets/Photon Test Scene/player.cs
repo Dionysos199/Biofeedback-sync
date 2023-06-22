@@ -74,7 +74,8 @@ public class player : MonoBehaviour
                     sendFloat(frequency, playerPV);
                     break;
                 case SignalProcessing.PhaseShift:
-                    sendFloat(coeff, playerPV);
+                    if (!bodyPV.IsMine)
+                        sendFloat(coeff, playerPV);
                     break;
                 default:
                     // Amplitude
@@ -91,7 +92,7 @@ public class player : MonoBehaviour
         if (bodyPV.IsMine)
         {
             var phaseShift = processor.GetPhaseShift(coeff);
-            Debug.Log("phaseShift: " + phaseShift);
+            Debug.Log("remoteCoeff: " + coeff + ", phaseShift: " + phaseShift);
             sendFloat(phaseShift, bodyPV);
         }
     }

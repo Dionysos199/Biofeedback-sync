@@ -112,15 +112,9 @@ public class SignalProcessor
         var coeff = Mathf.Acos(2 * value - 1);
 
         if (diff >= 0)
-        {
-            Debug.Log("localCoeff: " + coeff);
             return coeff;
-        }
         else
-        {
-            Debug.Log("localCoeff: " + -coeff);
             return -coeff;
-        }
     }
 
     public float GetNormalized()

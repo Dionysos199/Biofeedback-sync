@@ -68,12 +68,17 @@ public class mvtCtrlNetwork : MonoBehaviour
         //ReadInput();
         Move();
     }
+    int i;
     [PunRPC]
     void ReceiveFloat(float rotation, bool MaxReached,int playerIndex)
     {
         if (playerIndex == 1)
         {
-            Debug.Log("leftRotation  " + rotation);
+            if (MaxReached)
+            {
+                i++;
+            }
+            Debug.Log("leftRotation  " + rotation+" max reached"+MaxReached+ i);
             leftTilt = rotation;
             MaxReached1 = MaxReached ;
         }
@@ -88,17 +93,17 @@ public class mvtCtrlNetwork : MonoBehaviour
         Debug.Log(playerIndex);
     }
 
-    float lastMeasure;
-        
 
-    
+
+    float lastMeasure;
 
     void Move()
     {
-        if (MaxReached1 || MaxReached2)
+        if (MaxReached1 )
         {
             float dt = Time.time - lastMeasure;
             lastMeasure = Time.time;
+            Debug.Log("breath again" + dt);
           
         }
 

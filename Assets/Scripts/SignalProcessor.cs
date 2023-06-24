@@ -22,7 +22,7 @@ public class SignalProcessor
     private float _lastMax;
     private int _frequencyCount;
     private int _maxCount;
-    private int _lastCount;
+    private float _lastCount;
 
     bool Max;
 
@@ -219,7 +219,6 @@ public class SignalProcessor
                     // Local minimum
                     _lastMin = value;
                     Debug.Log("Local Minimum");
-                    Max = true;
                     UpdateFrequency();
                 }
             }
@@ -227,7 +226,8 @@ public class SignalProcessor
             {
                 // Local maximum
                 _lastMax = value;
-                Debug.Log("Local Maximum");
+
+                Max = true;
 
                 UpdateFrequency();
             }
@@ -242,11 +242,13 @@ public class SignalProcessor
     private void UpdateFrequency()
     {
         // Save current count
-        _lastCount = _frequencyCount;
+        float dt = Time.time-_lastCount;
 
+        Debug.Log("Local Maximum  " + dt);
+        _lastCount = Time.time;
         // Update absolute maximum if necessary
-        if (_lastCount > _maxCount)
-            _maxCount = _lastCount;
+        //  if (_lastCount > _maxCount)
+        // _maxCount = _lastCount;
 
         // Reset frequency counter
         _frequencyCount = 0;

@@ -17,17 +17,10 @@ float sdBox(float3 p, float3 b)
 }
 
 
-
 float sdRoundBox(in float3 p, in float3 b, in float r) {
 	float3 q = abs(p) - b;
 	return min(max(q.x, max(q.y, q.z)), 0.0) + length(max(q, 0.0)) - r;
 }
-float sdCone( float3 p, float2 c, float h )
-{
-  float q = length(p.xz);
-  return max(dot(c.xy,float2(q,p.y)),-h-p.y);
-}
-
 
 float opUS(float d1, float d2, float k) {
 	float h = clamp(0.5 + 0.5 * (d2 - d1) / k, 0.0, 1.0);

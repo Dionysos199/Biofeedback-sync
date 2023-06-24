@@ -5,6 +5,7 @@ using UnityEngine.XR;
 using Uduino;
 using Photon.Pun;
 using static UnityEngine.Rendering.DebugUI;
+using Unity.Mathematics;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
@@ -72,6 +73,8 @@ public class mvtCtrlNetwork : MonoBehaviour
         }
         if (playerIndex == 2)
         {
+
+            Debug.Log("rightRotation  " + rotation);
             rightTilt = rotation;
         }
         Debug.Log(playerIndex);
@@ -84,7 +87,7 @@ public class mvtCtrlNetwork : MonoBehaviour
 
         float pitch = 0;
         float yaw = 0;
-
+        float roll=0;
         // Set rotation
         switch (navigationMode)
         {
@@ -92,22 +95,25 @@ public class mvtCtrlNetwork : MonoBehaviour
                 pitch = 1 - leftTilt - rightTilt;
                 yaw = rightTilt - leftTilt;
 
+                transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
-                pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
-                yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
+              //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
+                //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
+                roll = math.abs( leftTilt - rightTilt);
+                Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
 
+                transform.Rotate(new Vector3(0, 0, roll) * rotationSpeed * Time.deltaTime);
                 break;
             default:
                 break;
         }
 
         // Tilt flippers
-        leftFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch + yaw)) * tiltRange, Vector3.right);
-        rightFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch - yaw)) * tiltRange, Vector3.right);
+       // leftFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch + yaw)) * tiltRange, Vector3.right);
+        //rightFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch - yaw)) * tiltRange, Vector3.right);
 
         // Rotate
-        transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
 
         // Move forward
         transform.Translate(-Vector3.up * thrust * Time.deltaTime);

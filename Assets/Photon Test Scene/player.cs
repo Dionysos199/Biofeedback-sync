@@ -15,39 +15,36 @@ public class player : MonoBehaviour
     PhotonView MyPV;
     int ActorNm;
 
-    public float inputMin = 950;
-    public float inputMax = 980;
-
-    public float outputMin = 0;
-    public float outputMax = 5;
 
 
-    private float scale;
-    Smoother smoother = new Smoother(bufferSize: 20);
+    SignalProcessor processor;
 
     // Start is called before the first frame update
     private void Awake()
     {
        UduinoManager.Instance.OnDataReceived += readSensor; //Create the Delegate
+
     }
     void Start()
     {
-
+        processor = new SignalProcessor(20, true);
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
         MyPV = GetComponent<PhotonView>();
        ActorNm  = MyPV.OwnerActorNr;
     }
+    private void Update()
+    {
+        UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
+        UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
+    }
     void readSensor(string data, UduinoDevice device)
     {
         float inputValue = float.Parse(data);
-        // Perform the mapping
-        float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);
-        float mappedValue = normalizedValue * (outputMax - outputMin) + outputMin;
 
-        float smoothedValue = smoother.SmoothValue(mappedValue);
-     
-        Debug.Log("mapped value " + mappedValue);
-        rotation = smoothedValue;
+        processor.smoothValue(inputValue);
+        rotation = processor.GetNormalized();
+        Debug.Log("angle"+  processor.GetPhaseShiftCoeff());
+
         if (MyPV.IsMine)
         {
             sendData();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class Smoother
 {
@@ -20,14 +21,7 @@ public class Smoother
         {
             buffer.Dequeue();
         }
-
-        float sum = 0;
-        foreach (var value in buffer)
-        {
-            sum += value;
-        }
-
-        float smoothedValue = sum / buffer.Count;
+        float smoothedValue = buffer.Average();
         return smoothedValue;
     }
 }

@@ -81,12 +81,22 @@ public class CameraController : SceneViewFilter
         UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
+
+
+    SignalProcessor processor;
+
+    private void Start()
+    {
+        processor = new SignalProcessor(20, false);
+    }
     public void OnDataReceived(string data, UduinoDevice device)
     {
-
         float value = float.Parse(data);
+        processor.smoothValue(value);
+        float n = processor.GetNormalized();
+
         raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-200)/500,0));
-      //  raymarchingMaterial.SetVector("r_sphere", r_sphere+new Vector4(0,0,0, (value - 200) / 500));
+        raymarchingMaterial.SetFloat("radius1", n);
 
     }
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -108,7 +118,8 @@ public class CameraController : SceneViewFilter
 
         raymarchingMaterial.SetVector("r_sphere", r_sphere+ new Vector4(spherePos.x, spherePos.y, spherePos.z, 0));
         Vector3 pos = holder.transform.position;
-        raymarchingMaterial.SetVector("r_box", r_box + new Vector4(pos.x,pos.y,pos.z,0));
+        raymarchingMaterial.SetVector("r_sphere2", r_sphere2 + new Vector4(pos.x, pos.y, pos.z, 0));
+        raymarchingMaterial.SetVector("r_box", r_box );
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
         
         raymarchingMaterial.SetColor("r_lightColor", r_lightColor);
@@ -127,7 +138,6 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetMatrix("r_cameraToWorld", raymarchingCamera.cameraToWorldMatrix);
         raymarchingMaterial.SetFloat("r_maxdistance", r_maxDistance);
         raymarchingMaterial.SetVector("r_modInterval", r_modInterval);
-        raymarchingMaterial.SetVector("r_sphere2", r_sphere2);
         raymarchingMaterial.SetFloat("r_boxRound", r_boxRound);
         raymarchingMaterial.SetFloat("r_boxSphereSmooth", r_boxSphereSmooth);
         raymarchingMaterial.SetFloat("r_sphereIntersectSmooth", r_sphereIntersectSmooth);

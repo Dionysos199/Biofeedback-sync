@@ -25,6 +25,9 @@
             uniform sampler2D _CameraDepthTexture;
             uniform float4x4 r_cameraFrustum, r_cameraToWorld;
             uniform float4 r_box, r_sphere, r_sphere2;
+            uniform float radius1;
+            uniform float radius2;
+
             uniform float r_boxRound, r_boxSphereSmooth, r_sphereIntersectSmooth;
             uniform float3 r_modInterval;
             uniform float3 r_light, r_lightColor;
@@ -106,11 +109,11 @@
                 //float modZ = pMod1(p.z, r_modInterval.z);
 
                 float Box1 = sdBox(p - r_box.xyz, r_box.www);
-                float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
+                float sphere = sdSphere(p - r_sphere.xyz, radius1);
                 float cone =sdCone( p+float3(3,3,0), float2 (1,1),3 );
-                float sphere2 = sdSphere(p - r_sphere2.xyz, r_sphere2.w);
-                float d = opUS(cone, Box1,10);
-                return opUS(sphere, d,10); 
+                float sphere2 = sdSphere(p - r_sphere2.xyz, radius2);
+               // float d = opUS(cone, Box1,10);
+                return opUS(sphere, sphere2, 5);
             //    float4 _mandleBrotColor1;
                  //float MandleBrot1 = mandleBulb(p-_mandleBrot1.xyz,_mandleBrotColor1.xyzw);
                  //float fractal1 = DE(p-_mandleBrot1.xyz,_power);

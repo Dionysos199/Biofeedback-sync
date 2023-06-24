@@ -5157,18 +5157,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601280682790770752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 5926494623120792350}
+  holder: {fileID: 2634901969336425520}
   belly: {fileID: 2634901969336425520}
   r_maxDistance: 200
   r_modInterval: {x: 20, y: 20, z: 20}
-  r_sphere: {x: 0, y: 0, z: 0, w: 2.36}
+  r_sphere: {x: 0.52, y: 0, z: 0, w: 1}
   r_box: {x: 0, y: 0, z: 0, w: 0.86}
-  r_sphere2: {x: 0, y: 0, z: 0, w: 0.67}
+  r_sphere2: {x: 0.5, y: 0, z: 0, w: 1}
   r_boxSphereSmooth: 0.46
   r_boxRound: 0.81
   r_sphereIntersectSmooth: 0.18
@@ -5180,7 +5180,7 @@ MonoBehaviour:
   r_maxIterations: 145
   r_accuracy: 0.01
   r_light: {fileID: 705507995}
-  r_color: {r: 0.6488256, g: 0.8117647, b: 0.5019608, a: 0}
+  r_color: {r: 0.103773594, g: 0.02006942, b: 0.07323213, a: 0}
   r_ambientIterations: 7
   r_ambientIntesity: 0.27
   r_ambientSteps: 0.52

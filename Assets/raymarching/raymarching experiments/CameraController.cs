@@ -8,6 +8,8 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(Camera))]
 public class CameraController : SceneViewFilter
 {
+    public Transform holder;
+    public Transform belly;
     private Material r_material;
     public float r_maxDistance;
     public Vector3 r_modInterval;
@@ -84,7 +86,7 @@ public class CameraController : SceneViewFilter
 
         float value = float.Parse(data);
         raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-200)/500,0));
-        raymarchingMaterial.SetVector("r_sphere", r_sphere+new Vector4(0,0,0, (value - 200) / 500));
+      //  raymarchingMaterial.SetVector("r_sphere", r_sphere+new Vector4(0,0,0, (value - 200) / 500));
 
     }
         private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -101,9 +103,12 @@ public class CameraController : SceneViewFilter
 
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
-       // raymarchingMaterial.SetColor("r_mainColor", r_color);
-        raymarchingMaterial.SetVector("r_sphere", r_sphere);
-        raymarchingMaterial.SetVector("r_box", r_box);
+        raymarchingMaterial.SetColor("r_mainColor", r_color);
+        Vector3 spherePos = belly.transform.position;
+
+        raymarchingMaterial.SetVector("r_sphere", r_sphere+ new Vector4(spherePos.x, spherePos.y, spherePos.z, 0));
+        Vector3 pos = holder.transform.position;
+        raymarchingMaterial.SetVector("r_box", r_box + new Vector4(pos.x,pos.y,pos.z,0));
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
         
         raymarchingMaterial.SetColor("r_lightColor", r_lightColor);

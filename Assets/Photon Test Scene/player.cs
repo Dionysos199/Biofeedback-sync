@@ -44,10 +44,7 @@ public class player : MonoBehaviour
         processor.smoothValue(inputValue);
         rotation = processor.GetNormalized();
         processor.extremum();
-        if (processor.MaxReached())
-        {
-            Debug.Log("maximum reached");
-        }
+   
 
         if (MyPV.IsMine)
         {

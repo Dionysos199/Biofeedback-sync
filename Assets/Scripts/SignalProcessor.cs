@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,7 +22,9 @@ public class SignalProcessor
     private float _lastMax;
     private int _frequencyCount;
     private int _maxCount;
-    private int _lastMaxCount;
+    private int _lastCount;
+
+    bool Max;
 
     public SignalProcessor(int bufferSize, bool invertReadings = false)
     {
@@ -56,7 +59,7 @@ public class SignalProcessor
             _lastMax = 0;
             _frequencyCount = 0;
             _maxCount = 1;
-            _lastMaxCount = 0;
+            _lastCount = 0;
         
 
         // Unset reset flag
@@ -111,7 +114,7 @@ public class SignalProcessor
 
     public float GetFrequency()
     {
-        return 1 - ((float)_lastMaxCount / (float)_maxCount);
+        return 1 - ((float)_lastCount / (float)_maxCount);
     }
 
     public float GetPhaseShift(float secondCoeff)
@@ -121,7 +124,7 @@ public class SignalProcessor
         // f(x) = 0.5 * cos(x - a) + 0.5.
         // The result is returned as a normalized value between 0 and 1.
 
-        var coeff = GetPhaseShiftCoeff();
+        var coeff = Acos();
         float phaseShift = (secondCoeff - coeff) / (4 * Mathf.PI) + 0.5f;
 
         if (0 <= phaseShift && phaseShift <= 1)
@@ -131,7 +134,7 @@ public class SignalProcessor
         return 0;
     }
 
-    public float GetPhaseShiftCoeff()
+    public float Acos()
     {
         // Calculate coefficient a from projected cosine wave of
         // type f(x) = 0.5 * cos(x - a) + 0.5 based on normalized
@@ -142,11 +145,11 @@ public class SignalProcessor
         _lastValue = value;
 
         var coeff = Mathf.Acos(2 * value - 1);
-        return coeff ;
+        //return coeff;
         if (diff >= 0)
             return coeff;
         else
-            return -coeff;
+            return Mathf.PI-coeff;
     }
 
     public float GetNormalized()
@@ -172,12 +175,35 @@ public class SignalProcessor
             return 0;
         }
     }
+    bool UpOrDown()
+    {
 
-    private void DetectPeak()
+        var value = GetNormalized();
+        var diff = value - _lastValue;
+        if (diff > 0)
+        {
+
+            _lastValue = value;
+            return true;
+        }
+        else 
+        {
+
+            _lastValue = value;
+            return false;
+        }
+
+    }
+    public bool MaxReached()
+    {
+        if (Max) return true;
+        else return false;
+    }
+    public void extremum()
     {
         var value = GetNormalized();
         var diff = value - _lastValue;
-
+        Max = false;
         if (diff == 0)
         {
             // Ignore plateaus
@@ -186,13 +212,16 @@ public class SignalProcessor
         else
         {
             // Detect peaks
-            if (diff > 0 && _lastDiff < 0)
+            if (diff > 0 )
             {
-                // Local minimum
-                _lastMin = value;
-                Debug.Log("Local Minimum");
 
-                UpdateFrequency();
+                if (_lastDiff < 0) {
+                    // Local minimum
+                    _lastMin = value;
+                    Debug.Log("Local Minimum");
+                    Max = true;
+                    UpdateFrequency();
+                }
             }
             else if (diff < 0 && _lastDiff > 0)
             {
@@ -213,15 +242,15 @@ public class SignalProcessor
     private void UpdateFrequency()
     {
         // Save current count
-        _lastMaxCount = _frequencyCount;
+        _lastCount = _frequencyCount;
 
         // Update absolute maximum if necessary
-        if (_lastMaxCount > _maxCount)
-            _maxCount = _lastMaxCount;
+        if (_lastCount > _maxCount)
+            _maxCount = _lastCount;
 
         // Reset frequency counter
         _frequencyCount = 0;
     }
-
-
+    
+        
 }

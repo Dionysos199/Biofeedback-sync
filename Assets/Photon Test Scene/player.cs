@@ -43,7 +43,11 @@ public class player : MonoBehaviour
 
         processor.smoothValue(inputValue);
         rotation = processor.GetNormalized();
-        Debug.Log("angle"+  processor.GetPhaseShiftCoeff());
+        processor.extremum();
+        if (processor.MaxReached())
+        {
+            Debug.Log("maximum reached");
+        }
 
         if (MyPV.IsMine)
         {

@@ -6,6 +6,7 @@ using Uduino;
 using Photon.Pun;
 using static UnityEngine.Rendering.DebugUI;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
@@ -46,6 +47,9 @@ public class mvtCtrlNetwork : MonoBehaviour
     private float rightTilt = 0.5f;
     private float phaseShift = 0;
 
+    private bool MaxReached1;
+    private bool MaxReached2;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -60,30 +64,44 @@ public class mvtCtrlNetwork : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+  
         //ReadInput();
         Move();
     }
     [PunRPC]
-    void ReceiveFloat(float rotation,int playerIndex)
+    void ReceiveFloat(float rotation, bool MaxReached,int playerIndex)
     {
         if (playerIndex == 1)
         {
             Debug.Log("leftRotation  " + rotation);
             leftTilt = rotation;
+            MaxReached1 = MaxReached ;
         }
         if (playerIndex == 2)
         {
 
             Debug.Log("rightRotation  " + rotation);
             rightTilt = rotation;
+
+            MaxReached1 = MaxReached;
         }
         Debug.Log(playerIndex);
     }
 
+    float lastMeasure;
+        
 
+    
 
     void Move()
     {
+        if (MaxReached1 || MaxReached2)
+        {
+            float dt = Time.time - lastMeasure;
+            lastMeasure = Time.time;
+          
+        }
+
 
         float pitch = 0;
         float yaw = 0;

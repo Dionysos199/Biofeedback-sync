@@ -39,6 +39,7 @@ public class player : MonoBehaviour
     }
     void readSensor(string data, UduinoDevice device)
     {
+
         float inputValue = float.Parse(data);
         // Perform the mapping
         float normalizedValue = (inputValue - inputMin) / (inputMax - inputMin);

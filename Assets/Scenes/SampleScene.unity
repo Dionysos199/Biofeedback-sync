@@ -5166,9 +5166,9 @@ MonoBehaviour:
   belly: {fileID: 2634901969336425520}
   r_maxDistance: 200
   r_modInterval: {x: 20, y: 20, z: 20}
-  r_sphere: {x: 0.52, y: 0, z: 0, w: 1}
+  r_sphere: {x: 0, y: 0, z: 0, w: 3.22}
   r_box: {x: 0, y: 0, z: 0, w: 0.86}
-  r_sphere2: {x: 0.5, y: 0, z: 0, w: 1}
+  r_sphere2: {x: 0.5, y: 0, z: 0, w: 1.53}
   r_boxSphereSmooth: 0.46
   r_boxRound: 0.81
   r_sphereIntersectSmooth: 0.18

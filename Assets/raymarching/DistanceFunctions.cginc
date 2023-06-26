@@ -154,3 +154,9 @@ float mandleBulb( in float3 p, out float4 resColor )
 
 
 
+float sdEllipsoid( in float3 p, in float3 r )
+{
+    float k0 = length(p/r);
+    float k1 = length(p/(r*r));
+    return k0*(k0-1.0)/k1;
+}

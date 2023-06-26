@@ -140,6 +140,7 @@
                 return res;
 
             }
+
             float boxAndSphere(float3 p){
 
                         float Box1 = sdBox(p - r_box.xyz, r_box.www);
@@ -149,19 +150,46 @@
 //                float d = opUS(cone, Box1,10);
                 return opUS(sphere, sphere2, 5);
             }
+            float mb(float3 p) {
+	            p.xyz = p.xzy;
+	            float3 z = p;
+	            float3 dz=float3(0,0,0);
+	            float power = 8.0;
+	            float r, theta, phi;
+	            float dr = 1.0;
+	
+	            float t0 = 1.0;
+	            for(int i = 0; i < 7; ++i) {
+		            r = length(z);
+		            if(r > 2.0) continue;
+		            theta = atan2(z.y , z.x);
+                   phi = asin(z.z / r) + _Time.y*0.1;
+                    dr = pow(r, power - 1.0) * dr * power + 1.0;
+	
+		            r = pow(r, power);
+		            theta = theta * power;
+		            phi = phi * power;
+		
+		            z = r * float3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi)) + p;
+		
+		            t0 = min(t0, r);
+	        }
+	            return float(0.5 * log(r) * r / dr);
+            }
+
             float r_distanceField(float3 p) {
          
               
              //
-             return stalagmite(p).x;
+            // return stalagmite(p).x;
               // return boxAndSphere(p);
 
     
              // float4 _mandleBrotColor1;
-             //float MandleBrot1 = mandleBulb(p-_mandleBrot1.xyz,_mandleBrotColor1.xyzw);
+             float MandleBrot = mb(p-_mandleBrot1.xyz);
                  //float fractal1 = DE(p-_mandleBrot1.xyz,_power);
        
-              //   return MandleBrot1;
+                 return MandleBrot;
             }
 
             float3 getNormal(float3 p) {

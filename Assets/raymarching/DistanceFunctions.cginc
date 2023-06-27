@@ -150,37 +150,6 @@ float mandleBulb( in float3 p, out float4 resColor )
     // distance estimation (through the Hubbard-Douady potential)
     return 0.25*log(m)*sqrt(m)/dz;
 }
-float mb(float3 p) {
-	p.xyz = p.xzy;
-	float3 z = p;
-	float3 dz=float3(0,0,0);
-	float power = 8.0;
-	float r, theta, phi;
-	float dr = 1.0;
-	
-	float t0 = 1.0;
-	for(int i = 0; i < 7; ++i) {
-		r = length(z);
-		if(r > 2.0) continue;
-		theta = atan2(z.y , z.x);
-        #ifdef phase_shift_on
-		phi = asin(z.z / r) + _Time.y*0.1;
-        #else
-        phi = asin(z.z / r);
-        #endif
-		
-		dr = pow(r, power - 1.0) * dr * power + 1.0;
-	
-		r = pow(r, power);
-		theta = theta * power;
-		phi = phi * power;
-		
-		z = r * float3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi)) + p;
-		
-		t0 = min(t0, r);
-	}
-	return float(0.5 * log(r) * r / dr);
-}
 
 float sdEllipsoid( in float3 p, in float3 r )
 {
@@ -188,3 +157,39 @@ float sdEllipsoid( in float3 p, in float3 r )
     float k1 = length(p/(r*r));
     return k0*(k0-1.0)/k1;
 }
+
+
+   float smin( float a, float b, float k )
+            {
+                float h = max(k-abs(a-b),0.0);
+                return min(a, b) - h*h*0.25/k;
+
+            }
+
+
+                       float mb(float3 p) {
+	            p.xyz = p.xzy;
+	            float3 z = p;
+	            float3 dz=float3(0,0,0);
+	            float power = 8.0;
+	            float r, theta, phi;
+	            float dr = 1.0;
+	
+	            float t0 = 1.0;
+	            for(int i = 0; i < 7; ++i) {
+		            r = length(z);
+		            if(r > 2.0) continue;
+		            theta = atan2(z.y , z.x);
+                   phi = asin(z.z / r) + _Time.y*0.1;
+                    dr = pow(r, power - 1.0) * dr * power + 1.0;
+	
+		            r = pow(r, power);
+		            theta = theta * power;
+		            phi = phi * power;
+		
+		            z = r * float3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi)) + p;
+		
+		            t0 = min(t0, r);
+	        }
+	            return float(0.5 * log(r) * r / dr);
+            }

@@ -94,12 +94,6 @@
                 return float3(cosY * v.x - sinY * v.z, v.y, sinY * v.x + cosY * v.z);
             }
 
-            float sdEllipsoid(in float3 p, in float3 r)
-            {
-                float k0 = length(p / r);
-                float k1 = length(p / (r * r));
-                return k0 * (k0 - 1.0) / k1;
-            }
             float2 stalagmite(float3 pos) {
                 // ground
                 float fh = -0.1 - 0.05 * (sin(pos.x * 2.0) + sin(pos.z * 2.0));

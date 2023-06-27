@@ -527,7 +527,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectionPlanes
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2228935663710689693, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 3499028072738979604, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 2189171428859603073, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 7515981707008707831, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 8180611776367351591, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 5293832830936694578, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
+    - {fileID: 8042882090888470672, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6420f88402bb21c40bdd41c00da0cda5, type: 3}
 --- !u!1 &383707368 stripped
 GameObject:
@@ -1875,7 +1882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac27d512e77f3847873bbcf3b13a429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerCharacteristics: 256
 --- !u!114 &1499360120
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,8 +46,8 @@ public class MovementController : MonoBehaviour
 
     public float inputMin = 820;
     public float inputMax = 980;
-    float outputMin = 0;
-    float outputMax = 5;
+    float outputMin;
+    float outputMax;
 
     // Start is called before the first frame update
     private void Awake()

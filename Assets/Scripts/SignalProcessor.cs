@@ -33,7 +33,8 @@ public class SignalProcessor
         _buffer = new Queue<float>();
         _invertReadings = invertReadings;
         _resetAutoRange = true;
-      //  ResetAutoRange(0);
+        // Sets the initial values of all waveform processing variables, otherwise they might be undefined
+        // ResetAutoRange(0);
     }
 
     public void RequestAutoRangeReset()
@@ -68,7 +69,7 @@ public class SignalProcessor
         Debug.Log("you bastard" + _resetAutoRange);
     }
 
-    public void smoothValue(float value)
+    public void AddValue(float value)
     {
         if (_resetAutoRange)
         {
@@ -85,13 +86,14 @@ public class SignalProcessor
         // Update or reset range boundaries
         var smoothedValue = _buffer.Average();
 
-        updateLimits(smoothedValue);
+        UpdateLimits(smoothedValue);
         
 
         // Run peak detection
        // DetectPeak();
     }
-    void updateLimits(float value)
+
+    void UpdateLimits(float value)
     {
 
         //Debug.Log("lower limit" + _lowerLimit);
@@ -253,6 +255,4 @@ public class SignalProcessor
         // Reset frequency counter
         _frequencyCount = 0;
     }
-    
-        
 }

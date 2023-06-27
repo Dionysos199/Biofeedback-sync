@@ -31,7 +31,12 @@ public class player : MonoBehaviour
         pv = GameObject.Find("Bone").GetComponent<PhotonView>();
         MyPV = GetComponent<PhotonView>();
        ActorNm  = MyPV.OwnerActorNr;
+
+        // Add invoke for resetting auto range
     }
+
+    // Add auto reset function
+
     private void Update()
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
@@ -41,7 +46,7 @@ public class player : MonoBehaviour
     {
         float inputValue = float.Parse(data);
 
-        processor.smoothValue(inputValue);
+        processor.AddValue(inputValue);
         rotation = processor.GetNormalized();
         processor.extremum();
    

@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!20 &5907524048041773847
 Camera:
@@ -48,17 +48,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: -0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -102,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 846250741178878858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -140,7 +132,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!20 &4659109249590237615
 Camera:
@@ -156,17 +148,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: 0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -210,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1305241698344927506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -248,7 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!20 &2518401604498676932
 Camera:
@@ -264,17 +248,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: -0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -318,7 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3714323365795660831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -356,7 +332,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5708661553059669338
 Camera:
@@ -372,17 +348,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: 0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -426,7 +394,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051214372062330578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -464,7 +432,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!20 &9154690906015580979
 Camera:
@@ -480,17 +448,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: -0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -534,7 +494,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5624731115828254832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -572,7 +532,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!20 &1699046999130121652
 Camera:
@@ -588,17 +548,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: 0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -642,7 +594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6606331716627588369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -680,7 +632,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4764956775630714900}
-  m_RootOrder: -1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &126918487427396887
 Camera:
@@ -696,17 +648,9 @@ Camera:
   m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 1
-  m_Iso: 200
-  m_ShutterSpeed: 0.005
-  m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 16
-  m_BladeCount: 5
-  m_Curvature: {x: 2, y: 11}
-  m_BarrelClipping: 0.25
-  m_Anamorphism: 0
   m_SensorSize: {x: 32, y: 18}
   m_LensShift: {x: 0, y: -0.5}
+  m_FocalLength: 16
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -750,7 +694,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7560280876463534490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb6628d84e95eea4c9b30a83327d859a, type: 3}
+  m_Script: {fileID: 11500000, guid: dd1382718e5b4414ba0fb689acc6ba10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectionScreen: {fileID: 0}
@@ -793,7 +737,7 @@ Transform:
   - {fileID: 4097269634778115320}
   - {fileID: 4890115151033519933}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6748879549379588702
 MonoBehaviour:

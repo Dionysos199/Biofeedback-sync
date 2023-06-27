@@ -5,6 +5,7 @@ using UnityEngine;
 using Whisper.Native;
 using Whisper.Utils;
 
+
 namespace Whisper
 {
     public class WhisperManager : MonoBehaviour
@@ -56,11 +57,13 @@ namespace Whisper
 
         public event OnNewSegmentDelegate OnNewSegment;
         public event OnProgressDelegate OnProgress;
-
+        
         private WhisperWrapper _whisper;
         private WhisperParams _params;
+        
         private readonly MainThreadDispatcher _dispatcher = new MainThreadDispatcher();
-
+        public string text="man what are you doing";
+        
         public bool IsLoaded => _whisper != null;
         public bool IsLoading { get; private set; }
 
@@ -132,6 +135,7 @@ namespace Whisper
             
             UpdateParams();
             var res = await _whisper.GetTextAsync(clip, _params);
+
             return res;
         }
         
@@ -147,6 +151,8 @@ namespace Whisper
 
             UpdateParams();
             var res = await _whisper.GetTextAsync(samples, frequency, channels, _params);
+            text = res.Result;
+            singleton.text = text;
             return res;
         }
 

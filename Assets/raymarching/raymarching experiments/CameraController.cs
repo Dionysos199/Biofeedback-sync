@@ -97,7 +97,7 @@ public class CameraController : SceneViewFilter
     public void OnDataReceived(string data, UduinoDevice device)
     {
         float value = float.Parse(data);
-        processor.smoothValue(value);
+        processor.AddValue(value);
         float n = processor.GetNormalized();
 
         raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-200)/500,0));

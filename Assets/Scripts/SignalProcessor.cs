@@ -117,6 +117,11 @@ public class SignalProcessor
             return -coeff;
     }
 
+    public bool GetMaximum()
+    {
+        return _lastMax == _lastValue;
+    }
+
     public float GetNormalized()
     {
         var value = _buffer.Average();

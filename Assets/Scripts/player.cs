@@ -8,8 +8,6 @@ using Uduino;
 
 public class player : MonoBehaviour
 {
-    public SignalProcessing signalProcessing;
-    public enum SignalProcessing { Amplitude, Frequency, PhaseShift }
     private PhotonView bodyPV;
     private PhotonView playerPV;
     private int actorNum;
@@ -59,46 +57,36 @@ public class player : MonoBehaviour
         Debug.Log("amplitude: " + amplitude);
 
         // Calculate frequency
-        var frequency = processor.GetFrequency();
-        Debug.Log("frequency: " + frequency);
+        // var frequency = processor.GetFrequency();
+        // Debug.Log("frequency: " + frequency);
 
         // Calculate phase shift coefficient
-        var coeff = processor.GetPhaseShiftCoeff();
-        Debug.Log("coeff: " + coeff);
+        // var coeff = processor.GetPhaseShiftCoeff();
+        // Debug.Log("coeff: " + coeff);
+
+        // Check for local maximum
+        var isMax = processor.GetMaximum();
 
         if (playerPV.IsMine)
         {
-            switch (signalProcessing)
-            {
-                case SignalProcessing.Frequency:
-                    sendFloat(frequency, playerPV);
-                    break;
-                case SignalProcessing.PhaseShift:
-                    if (!bodyPV.IsMine)
-                        sendFloat(coeff, playerPV);
-                    break;
-                default:
-                    // Amplitude
-                    sendFloat(amplitude, bodyPV);
-                    break;
-            }
+            sendValues(amplitude, isMax);
         }
     }
 
-    [PunRPC]
-    void ReceiveFloat(float coeff, int actorNum)
-    {
-        // Calculate phase shift if I have ownership of the Body
-        if (bodyPV.IsMine)
-        {
-            var phaseShift = processor.GetPhaseShift(coeff);
-            Debug.Log("remoteCoeff: " + coeff + ", phaseShift: " + phaseShift);
-            sendFloat(phaseShift, bodyPV);
-        }
-    }
+    // [PunRPC]
+    // void ReceiveFloat(float coeff, int actorNum)
+    // {
+    //     // Calculate phase shift if I have ownership of the Body
+    //     if (bodyPV.IsMine)
+    //     {
+    //         var phaseShift = processor.GetPhaseShift(coeff);
+    //         Debug.Log("remoteCoeff: " + coeff + ", phaseShift: " + phaseShift);
+    //         sendFloat(phaseShift, bodyPV);
+    //     }
+    // }
 
-    void sendFloat(float value, PhotonView target)
+    void sendValues(float floatValue, bool boolValue)
     {
-        target.RPC("ReceiveFloat", RpcTarget.All, value, actorNum);
+        playerPV.RPC("ReceiveValues", RpcTarget.All, floatValue, boolValue, actorNum);
     }
 }

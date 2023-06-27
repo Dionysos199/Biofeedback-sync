@@ -14,11 +14,18 @@ public class MovementControlNetwork : MonoBehaviour
 
     // Navigation control
     [Header("Navigation Settings")]
+    public NavigationMode navigationMode;
+    public enum NavigationMode { Differential, PhaseShift }
     public float thrust = 0.7f;
     public float rotationSpeed = 10f;
 
     private float leftTilt = 0.5f;
     private float rightTilt = 0.5f;
+
+    // Phase shift
+    private int peakCounter = 0;
+    private int peakDistance = 0;
+    private int maxPeakDistance = 1;
 
     private PhotonView photonView;
 
@@ -29,17 +36,26 @@ public class MovementControlNetwork : MonoBehaviour
     }
     
     [PunRPC]
-    void ReceiveFloat(float tilt, int playerIndex)
+    void ReceiveValues(float tilt, bool isMax, int playerIndex)
     {
-        Debug.Log("playerIndex: " + playerIndex);
-
         if (playerIndex == 1)
         {
-            Debug.Log("leftTilt: " + tilt);
+            if (isMax)
+                peakCounter++;
+
+            Debug.Log("leftTilt: " + tilt + ", isMax: " + isMax + ", peakCounter: " + peakCounter);
             leftTilt = tilt;
         }
         if (playerIndex == 2)
         {
+            if (isMax)
+            {
+                peakDistance = peakCounter;
+                if (peakDistance > maxPeakDistance)
+                    peakDistance = maxPeakDistance;
+                peakCounter = 0;
+            }
+
             Debug.Log("rightTilt: " + tilt);
             rightTilt = tilt;
         }
@@ -47,9 +63,31 @@ public class MovementControlNetwork : MonoBehaviour
 
     void Move()
     {
-        // Set rotation
-        float pitch = 1 - leftTilt - rightTilt;
-        float yaw = rightTilt - leftTilt;
+        float pitch = 0;
+        float yaw = 0;
+
+        switch (navigationMode)
+        {
+            case NavigationMode.Differential:
+                // Set rotation
+                pitch = 1 - leftTilt - rightTilt;
+                yaw = rightTilt - leftTilt;
+                break;
+            case NavigationMode.PhaseShift:
+                var shift = peakDistance / maxPeakDistance;
+                // check against a threashold
+                if (shift <= 0.2f)
+                {
+                    // Add navigation based on head movement/looking direction of both players
+                }
+                else
+                {
+                    // Add random movement
+                }
+                break;
+            default:
+                break;
+        }
 
         // Tilt flippers (only for visual feedback, no effect on navigation)
         leftFlipper.transform.localRotation = Quaternion.AngleAxis((0.5f * (pitch + yaw)) * tiltRange, Vector3.right);

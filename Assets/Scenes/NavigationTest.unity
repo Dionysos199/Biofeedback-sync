@@ -765,6 +765,10 @@ PrefabInstance:
       propertyPath: rightFlipper
       value: 
       objectReference: {fileID: 825359059}
+    - target: {fileID: 1165149377825106558, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
+      propertyPath: navigationMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1316705397044979427, guid: c9986da795c6e8e4c985c35c4ce290b8, type: 3}
       propertyPath: m_InteractionManager
       value: 

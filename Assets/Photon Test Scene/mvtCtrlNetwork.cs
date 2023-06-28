@@ -101,13 +101,15 @@ public class mvtCtrlNetwork : MonoBehaviour
     {
         if (MaxReached1 )
         {
+
+            float dt = Time.time - lastMeasure;
             lastMeasure = Time.time;
+
+            Debug.Log("breath again" + dt);
         }
 
         if (MaxReached2)
         {
-            float dt = Time.time - lastMeasure;
-            Debug.Log("breath again" + dt);
         }
 
 

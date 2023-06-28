@@ -96,13 +96,14 @@ public class CameraController : SceneViewFilter
             return;
         }
 
+
         raymarchingMaterial.SetVector("_mandleBrot1", _mandleBrot1);
         raymarchingMaterial.SetVector("_mandleBrotColor1", _mandleBrotColor1);
         raymarchingMaterial.SetFloat("_power", _power);
 
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
-        // raymarchingMaterial.SetColor("r_mainColor", r_color);
+        raymarchingMaterial.SetColor("r_mainColor", r_color);
         raymarchingMaterial.SetVector("r_sphere", r_sphere);
         raymarchingMaterial.SetVector("r_box", r_box);
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
@@ -134,6 +135,7 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetTexture("r_reflectionCube", r_reflectionCube);
 
         RenderTexture.active = destination;
+
 
         raymarchingMaterial.SetTexture("_MainTex", source);
 

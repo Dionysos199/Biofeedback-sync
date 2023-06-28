@@ -140,9 +140,9 @@
                 float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
              
                 return opS(sphere, Box1);*/  
-                float MandleBrot = mb(p - _mandleBrot1.xyz);
-                return MandleBrot;
-               // return stalagmite(p).x;
+                //float MandleBrot = mb(p - _mandleBrot1.xyz);
+                //return MandleBrot;
+                return stalagmite(p).x;
                // return map(p);
             
             }

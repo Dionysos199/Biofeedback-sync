@@ -121,17 +121,7 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
         raymarchingMaterial.SetColor("r_mainColor", r_color);
-        Vector4[] posArray = new Vector4[25];
-        for (int i = 0; i < posArray.Length; i++)
-        {
-
-            posArray[i]=  new Vector4(5*i, 3*i, 0, 3);
-            
-        }
-        raymarchingMaterial.SetVectorArray("posArray", posArray);
-        
-
-
+      
         Vector3 spherePos = belly.transform.position;
         raymarchingMaterial.SetVector("r_sphere", r_sphere+ new Vector4(spherePos.x, spherePos.y, spherePos.z, 0));
         Vector3 pos = holder.transform.position;

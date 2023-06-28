@@ -88,7 +88,7 @@ public class mvtCtrlNetwork : MonoBehaviour
             Debug.Log("rightRotation  " + rotation);
             rightTilt = rotation;
 
-            MaxReached1 = MaxReached;
+            MaxReached2 = MaxReached;
         }
         Debug.Log(playerIndex);
     }

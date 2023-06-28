@@ -8,8 +8,6 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(Camera))]
 public class CameraController : SceneViewFilter
 {
-    public Transform holder;
-    public Transform belly;
     private Material r_material;
     public float r_maxDistance;
     public Vector3 r_modInterval;
@@ -49,8 +47,6 @@ public class CameraController : SceneViewFilter
     public float r_environmentIntensity;
     public Cubemap r_reflectionCube;
 
-    Vector4[] posArray;
-
     [SerializeField]
     private Shader r_shader;
     public Material raymarchingMaterial
@@ -65,11 +61,14 @@ public class CameraController : SceneViewFilter
             return r_material;
         }
     }
-    
+
     private Camera r_camera;
-    public Camera raymarchingCamera {
-        get { 
-            if (!r_camera) {
+    public Camera raymarchingCamera
+    {
+        get
+        {
+            if (!r_camera)
+            {
                 r_camera = GetComponent<Camera>();
             }
             return r_camera;
@@ -79,32 +78,17 @@ public class CameraController : SceneViewFilter
 
     void Awake()
     {
-       
-        
+
         UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
-
-
-    SignalProcessor processor;
-
-    private void Start()
-    {
-        processor = new SignalProcessor(20, false);
-
-   
-    }
     public void OnDataReceived(string data, UduinoDevice device)
     {
+
         float value = float.Parse(data);
-        processor.AddValue(value);
-        float n = processor.GetNormalized();
-
-        raymarchingMaterial.SetColor("r_mainColor", new Color(0,(value-200)/500,0));
-        raymarchingMaterial.SetFloat("radius1", n);
-
+        raymarchingMaterial.SetColor("r_mainColor", new Color(0, (value - 200) / 500, 0));
     }
-        private void OnRenderImage(RenderTexture source, RenderTexture destination)
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (!raymarchingMaterial)
         {
@@ -112,23 +96,17 @@ public class CameraController : SceneViewFilter
             return;
         }
 
-
-
         raymarchingMaterial.SetVector("_mandleBrot1", _mandleBrot1);
         raymarchingMaterial.SetVector("_mandleBrotColor1", _mandleBrotColor1);
         raymarchingMaterial.SetFloat("_power", _power);
 
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
-        raymarchingMaterial.SetColor("r_mainColor", r_color);
-      
-        Vector3 spherePos = belly.transform.position;
-        raymarchingMaterial.SetVector("r_sphere", r_sphere+ new Vector4(spherePos.x, spherePos.y, spherePos.z, 0));
-        Vector3 pos = holder.transform.position;
-        raymarchingMaterial.SetVector("r_sphere2", r_sphere2 + new Vector4(pos.x, pos.y, pos.z, 0));
-        raymarchingMaterial.SetVector("r_box", r_box );
+        // raymarchingMaterial.SetColor("r_mainColor", r_color);
+        raymarchingMaterial.SetVector("r_sphere", r_sphere);
+        raymarchingMaterial.SetVector("r_box", r_box);
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
-        
+
         raymarchingMaterial.SetColor("r_lightColor", r_lightColor);
         raymarchingMaterial.SetFloat("r_lightIntensity", r_lightIntensity);
         raymarchingMaterial.SetFloat("r_shadowIntensity", r_shadowIntensity);
@@ -145,6 +123,7 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetMatrix("r_cameraToWorld", raymarchingCamera.cameraToWorldMatrix);
         raymarchingMaterial.SetFloat("r_maxdistance", r_maxDistance);
         raymarchingMaterial.SetVector("r_modInterval", r_modInterval);
+        raymarchingMaterial.SetVector("r_sphere2", r_sphere2);
         raymarchingMaterial.SetFloat("r_boxRound", r_boxRound);
         raymarchingMaterial.SetFloat("r_boxSphereSmooth", r_boxSphereSmooth);
         raymarchingMaterial.SetFloat("r_sphereIntersectSmooth", r_sphereIntersectSmooth);
@@ -196,7 +175,7 @@ public class CameraController : SceneViewFilter
         frustum.SetRow(2, r_BOTTOMRIGHT);
         frustum.SetRow(1, r_TOPRIGHT);
         frustum.SetRow(0, r_TOPLEFT);
-       
+
 
         return frustum;
     }

@@ -25,6 +25,9 @@
             uniform sampler2D _CameraDepthTexture;
             uniform float4x4 r_cameraFrustum, r_cameraToWorld;
             uniform float4 r_box, r_sphere, r_sphere2;
+            uniform float radius1;
+
+
             uniform float r_boxRound, r_boxSphereSmooth, r_sphereIntersectSmooth;
             uniform float3 r_modInterval;
             uniform float3 r_light, r_lightColor;
@@ -104,9 +107,9 @@
             float usersUI(float3 p) {
 
                 float Box1 = sdBox(p - r_box.xyz, r_box.www);
-                float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
+                float sphere = sdSphere(p - r_sphere.xyz, radius1/100);
 
-                return opSU(sphere, Box1,10);
+                return opSU(sphere, Box1,2);
             }
             float r_distanceField(float3 p) {
                 /* float ground = sdPlane(p, float4(0, 1, 0, 0));

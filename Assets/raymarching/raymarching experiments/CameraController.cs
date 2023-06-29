@@ -62,7 +62,7 @@ public class CameraController : SceneViewFilter
             return r_material;
         }
     }
-
+  
     private Camera r_camera;
     public Camera raymarchingCamera
     {
@@ -83,11 +83,17 @@ public class CameraController : SceneViewFilter
         UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
+    SignalProcessor signalProcessor= new SignalProcessor(20,true);
     public void OnDataReceived(string data, UduinoDevice device)
     {
 
         float value = float.Parse(data);
-        raymarchingMaterial.SetColor("r_mainColor", new Color(0, (value - 200) / 500, 0));
+        signalProcessor.AddValue(value);
+        float n= signalProcessor.GetNormalized();
+        Debug.Log("nnnnnnnnnnnnn"+n);
+        raymarchingMaterial.SetFloat("radius1", n);
+
+
     }
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {

@@ -50,6 +50,9 @@ public class mvtCtrlNetwork : MonoBehaviour
     private bool MaxReached1;
     private bool MaxReached2;
 
+    CameraController CameraController;
+    public GameObject _camera;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -58,13 +61,13 @@ public class mvtCtrlNetwork : MonoBehaviour
     }
     void Start()
     {
+        CameraController =_camera. GetComponent<CameraController>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-  
         //ReadInput();
         Move();
     }
@@ -77,10 +80,11 @@ public class mvtCtrlNetwork : MonoBehaviour
             if (MaxReached)
             {
                 i++;
+
+                Debug.Log("leftRotation  " + rotation + " max reached" + MaxReached + i);
             }
-            Debug.Log("leftRotation  " + rotation+" max reached"+MaxReached+ i);
             leftTilt = rotation;
-            MaxReached1 = MaxReached ;
+            MaxReached1 = MaxReached;
         }
         if (playerIndex == 2)
         {
@@ -96,14 +100,14 @@ public class mvtCtrlNetwork : MonoBehaviour
 
 
     float lastMeasure;
-
+    float dt;
     void Move()
     {
         if (MaxReached1 )
         {
 
-            float dt = Time.time - lastMeasure;
-            lastMeasure = Time.time;
+
+           float dt = Time.time - lastMeasure;
 
             Debug.Log("breath again" + dt);
         }
@@ -111,9 +115,10 @@ public class mvtCtrlNetwork : MonoBehaviour
         if (MaxReached2)
         {
 
+            lastMeasure = Time.time;
 
         }
-
+        //CameraController.r_sphere.x = Mathf.Lerp(CameraController.r_sphere.x,dt,5);
 
         float pitch = 0;
         float yaw = 0;

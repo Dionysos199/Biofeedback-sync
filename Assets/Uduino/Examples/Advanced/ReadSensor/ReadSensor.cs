@@ -21,7 +21,7 @@ public class ReadSensor : MonoBehaviour
     void Update()
     {
         UduinoDevice myDevice = UduinoManager.Instance.GetBoard("Arduino");
-        UduinoManager.Instance.Read(myDevice, "redSensors"); // Read every frame the value of the "mySensor" function on our board. 
+        UduinoManager.Instance.Read(myDevice, "readSensors"); // Read every frame the value of the "mySensor" function on our board. 
     }
     int i;
 

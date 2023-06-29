@@ -229,7 +229,12 @@ public class SignalProcessor
                 // Local maximum
                 _lastMax = value;
 
-                Max = true;
+                if (_lastMax-_lastMin > .2)
+                {
+                    Max = true;
+
+                    Debug.Log("miao " + _lastMax);
+                }
 
                 UpdateFrequency();
             }

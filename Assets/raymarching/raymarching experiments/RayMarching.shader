@@ -101,6 +101,13 @@
 
                 return opS(sphere, Box1);
             }
+            float usersUI(float3 p) {
+
+                float Box1 = sdBox(p - r_box.xyz, r_box.www);
+                float sphere = sdSphere(p - r_sphere.xyz, r_sphere.w);
+
+                return opSU(sphere, Box1,10);
+            }
             float r_distanceField(float3 p) {
                 /* float ground = sdPlane(p, float4(0, 1, 0, 0));
                   float modZ = pMod1(p.z, r_modInterval.z);
@@ -117,7 +124,8 @@
                        //float fractal1 = DE(p-_mandleBrot1.xyz,_power);
 
                     //   return MandleBrot1;
-                return stalagmite(p);
+                float ui = usersUI(p);
+                return opU(ui,stalagmite(p));
               //  return boolBoxSphere(p);
                
                   }

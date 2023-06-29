@@ -8,6 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 [RequireComponent(typeof(Camera))]
 public class CameraController : SceneViewFilter
 {
+    public Transform UI;
     private Material r_material;
     public float r_maxDistance;
     public Vector3 r_modInterval;
@@ -104,8 +105,12 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
         raymarchingMaterial.SetColor("r_mainColor", r_color);
-        raymarchingMaterial.SetVector("r_sphere", r_sphere);
-        raymarchingMaterial.SetVector("r_box", r_box);
+        Vector3 UIpos = UI.transform.position;
+
+        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z));
+        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x,UIpos.y,UIpos.z));
+
+
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);
 
         raymarchingMaterial.SetColor("r_lightColor", r_lightColor);

@@ -4175,8 +4175,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405416641776464470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.1, y: -0.06, z: -38}
+  m_LocalScale: {x: 0.48735, y: 0.48735, z: 0.48735}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8240269793031469170}
@@ -4283,7 +4283,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.93561965
+  near clip plane: 0.4559741
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5150,6 +5150,7 @@ GameObject:
   - component: {fileID: 5248519481327795563}
   - component: {fileID: 3037228683943925674}
   - component: {fileID: 91945595}
+  - component: {fileID: 5712662396007873724}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -5214,7 +5215,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.8814891
+  near clip plane: 0.4295937
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5318,7 +5319,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.9356197
+  near clip plane: 0.4559741
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5377,7 +5378,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.94000244
+  near clip plane: 0.4581089
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5445,6 +5446,51 @@ Transform:
   m_Father: {fileID: 4593239080815665579}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &5712662396007873724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739586959390522046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &5714426232540367970
 GameObject:
   m_ObjectHideFlags: 0
@@ -5473,6 +5519,7 @@ GameObject:
   - component: {fileID: 5396838659123004606}
   - component: {fileID: 1581455603814873109}
   - component: {fileID: 91945596}
+  - component: {fileID: 8751645481194151392}
   m_Layer: 0
   m_Name: FrontBottom
   m_TagString: Untagged
@@ -5528,6 +5575,7 @@ GameObject:
   - component: {fileID: 1584945797257253485}
   - component: {fileID: 8194277385833369651}
   - component: {fileID: 2052985999}
+  - component: {fileID: 8194277385833369652}
   m_Layer: 0
   m_Name: RightBottom
   m_TagString: Untagged
@@ -5776,6 +5824,7 @@ GameObject:
   - component: {fileID: 7010049743957623560}
   - component: {fileID: 6218406916147390828}
   - component: {fileID: 91945599}
+  - component: {fileID: 7010049743957623561}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -5914,7 +5963,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.9443801
+  near clip plane: 0.46024382
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5934,6 +5983,51 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &7010049743957623561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777105799320509488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &7179605866414447209
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6141,7 +6235,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.939998
+  near clip plane: 0.45810667
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -6271,6 +6365,7 @@ GameObject:
   - component: {fileID: 7572728147854872138}
   - component: {fileID: 5088744620979629208}
   - component: {fileID: 91945597}
+  - component: {fileID: 8038345190326030329}
   m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
@@ -6278,6 +6373,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8038345190326030329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038345190326030328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &8194277385833369651
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6286,6 +6426,51 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5959664905380523213}
   m_Enabled: 0
+--- !u!114 &8194277385833369652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5959664905380523213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &8229822578561908357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6464,6 +6649,7 @@ GameObject:
   - component: {fileID: 5015962010830142352}
   - component: {fileID: 6127843098889564334}
   - component: {fileID: 1036933977}
+  - component: {fileID: 8366960893433724282}
   m_Layer: 0
   m_Name: BottomFront
   m_TagString: Untagged
@@ -6471,6 +6657,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8366960893433724282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366960893433724281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &8382466444393748772
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,7 +6788,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.9443801
+  near clip plane: 0.46024373
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -6742,6 +6973,51 @@ Transform:
   m_Father: {fileID: 4593239080815665579}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8751645481194151392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872015451233028142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!4 &8787665087903572607
 Transform:
   m_ObjectHideFlags: 0
@@ -6770,6 +7046,7 @@ GameObject:
   - component: {fileID: 8499209199587694865}
   - component: {fileID: 3195003386813530095}
   - component: {fileID: 91945598}
+  - component: {fileID: 9024420852221009688}
   m_Layer: 0
   m_Name: LeftBottom
   m_TagString: Untagged
@@ -6777,6 +7054,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9024420852221009688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024420852221009687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c626cb6126312f74097a7e67e069eee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 2386193688149472396}
+  r_maxDistance: 150
+  r_modInterval: {x: 12, y: 12, z: 0}
+  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_sphere2: {x: 0, y: 0, z: 0, w: 0}
+  r_boxSphereSmooth: 0.11
+  r_boxRound: 0.87
+  r_sphereIntersectSmooth: 0.49
+  r_shadowIntensity: 0.34
+  r_lightIntensity: 1.32
+  r_shadowDistance: {x: 0, y: 0}
+  r_lightColor: {r: 0.33582902, g: 0.735849, b: 0.14231041, a: 0}
+  r_shadowPenumbra: 1.26
+  r_maxIterations: 112
+  r_accuracy: 0.01
+  r_light: {fileID: 705507995}
+  r_color: {r: 0.0754717, g: 0.045685064, b: 0.043787826, a: 0}
+  r_ambientIterations: 68
+  r_ambientIntesity: 1.43
+  r_ambientSteps: 1.12
+  _mandleBrot1: {x: 0, y: 0, z: 0}
+  _mandleBrotColor1: {x: 0, y: 0, z: 0, w: 0}
+  _power: 0
+  r_sphere4: {x: 0, y: 0, z: 0, w: 0}
+  r_sphereSmooth: 0.55
+  r_degreeRotate: 0.94
+  r_rotationDegree: 1.13
+  r_reflectionCount: 33
+  r_reflectionIntensity: 0.34
+  r_environmentIntensity: 1.91
+  r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &9100091603030962114
 MonoBehaviour:
   m_ObjectHideFlags: 0

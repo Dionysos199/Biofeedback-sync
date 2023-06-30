@@ -1058,7 +1058,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126918487427396887, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.93929994
+      value: 0.9392996
       objectReference: {fileID: 0}
     - target: {fileID: 1699046999130121652, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -1130,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708661553059669338, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9393003
+      value: 0.9392997
       objectReference: {fileID: 0}
     - target: {fileID: 5907524048041773847, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -2017,6 +2017,29 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1013865147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2743594585072111188, guid: 9479970a401f7824f9e1c1f6d1f6dd1e, type: 3}
+  m_PrefabInstance: {fileID: 2743594585850860875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1013865150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013865147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f958c02befebe84da722aa055d5778a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartBrightness: 3.89
+  EndBrightness: 0.24
+  TriggerDistance: 10
+  DecreaseValue: 0.5
+  player: {fileID: 4378508876158758754}
+  SceneTransitionObject: {fileID: 1801602300}
 --- !u!1 &1207266189
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3072,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1801602300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 937293236821067068, guid: 7cc4588f86ef71247911d695a2cd90fc, type: 3}
+  m_PrefabInstance: {fileID: 937293236728544685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1882774953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4097,7 +4125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405416641776464470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.32}
+  m_LocalPosition: {x: 0, y: 0, z: -8.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

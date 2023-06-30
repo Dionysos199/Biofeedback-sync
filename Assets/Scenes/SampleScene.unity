@@ -967,13 +967,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770203650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38822faa92d062f4481a69aa7cb40f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 2
+  fadeOnStart: 0
+  fadeDuration: 10
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &770203662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770203650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f15c144aefbb4468920f4d960071c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SferaPanoramica: {fileID: 770203650}
 --- !u!1001 &778808423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1044,7 +1058,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126918487427396887, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9392996
+      value: 0.93929994
       objectReference: {fileID: 0}
     - target: {fileID: 1699046999130121652, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -1116,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708661553059669338, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9392997
+      value: 0.9393003
       objectReference: {fileID: 0}
     - target: {fileID: 5907524048041773847, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -4050,6 +4064,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 937293236821067069, guid: 7cc4588f86ef71247911d695a2cd90fc, type: 3}
+      propertyPath: fadeScreen
+      value: 
+      objectReference: {fileID: 770203656}
+    - target: {fileID: 937293236821067069, guid: 7cc4588f86ef71247911d695a2cd90fc, type: 3}
+      propertyPath: _invertObjectnormals
+      value: 
+      objectReference: {fileID: 770203662}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cc4588f86ef71247911d695a2cd90fc, type: 3}
 --- !u!4 &1060191450175498389
@@ -4075,7 +4097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405416641776464470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8.7}
+  m_LocalPosition: {x: 0, y: 0, z: 3.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4335,6 +4357,10 @@ PrefabInstance:
     - target: {fileID: 2743594585072111188, guid: 9479970a401f7824f9e1c1f6d1f6dd1e, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743594585072111188, guid: 9479970a401f7824f9e1c1f6d1f6dd1e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2743594585072111210, guid: 9479970a401f7824f9e1c1f6d1f6dd1e, type: 3}
       propertyPath: m_RootOrder
@@ -5067,6 +5093,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6378021689786768976, guid: c7d7cd58999056c43a9d7e875879b801, type: 3}
+      propertyPath: fadeScreen
+      value: 
+      objectReference: {fileID: 770203656}
+    - target: {fileID: 6378021689786768976, guid: c7d7cd58999056c43a9d7e875879b801, type: 3}
+      propertyPath: _invertObjectnormals
+      value: 
+      objectReference: {fileID: 770203662}
     - target: {fileID: 6378021689786768977, guid: c7d7cd58999056c43a9d7e875879b801, type: 3}
       propertyPath: m_Name
       value: SceneManager

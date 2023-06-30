@@ -6,7 +6,7 @@ public class InvertObjectNormals : MonoBehaviour
 {
     public GameObject SferaPanoramica;
 
-    void Awake()
+    void Start()
     {
         InvertSphere();
     }

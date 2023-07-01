@@ -92,7 +92,15 @@ public class mvtCtrlNetwork : MonoBehaviour
             {
                 i++;
 
-              }
+
+                last_dt = dt;
+
+                dt = Time.time - lastTime;
+
+
+                Debug.Log("last dt " + last_dt + "    dt " + dt +"   time "+Time.time+"  last time  "+lastTime);
+
+            }
             Debug.Log("leftRotation  " + rotation + " max reached" + MaxReached + i);
  
             leftTilt = rotation;
@@ -100,37 +108,25 @@ public class mvtCtrlNetwork : MonoBehaviour
         }
         if (playerIndex == 2)
         {
+            if (MaxReached)
+            {
 
-            Debug.Log("rightRotation  " + rotation);
+                lastTime = Time.time;
+
+            }
             rightTilt = rotation;
 
-            MaxReached2 = MaxReached;
         }
         Debug.Log(playerIndex);
     }
 
 
 
-    float lastMeasure;
+    float lastTime;
     float dt;
     float last_dt;
     public float lerpDt;
-    void CalculatePhaseSHift()
-    {
-        if (MaxReached1)
-        {
 
-            last_dt = dt;
-            dt = Time.time - lastMeasure;
-        }
-
-        if (MaxReached2)
-        {
-            lastMeasure = Time.time;
-        }
-
-        lerpDt = Mathf.Lerp(last_dt, dt, (Time.time - lastMeasure));
-    }
     Vector3 headRotation ()
     {
         var head = new List<UnityEngine.XR.InputDevice>();
@@ -143,9 +139,10 @@ public class mvtCtrlNetwork : MonoBehaviour
     }
     void Move()
     {
-   
-        //CameraController.r_sphere.x = Mathf.Lerp(CameraController.r_sphere.x,dt,5);
-        CalculatePhaseSHift();
+
+        Debug.Log("  lerped Dt " + lerpDt);
+        lerpDt = Mathf.Lerp(last_dt, dt, (Time.time - lastTime));
+
         float pitch = 0;
         float yaw = 0;
         float roll=0;

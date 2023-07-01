@@ -97,8 +97,6 @@ public class mvtCtrlNetwork : MonoBehaviour
 
                 dt = Time.time - lastTime;
 
-                lastTime = Time.time;
-
                 Debug.Log("last dt " + last_dt + "    dt " + dt +"   time "+Time.time+"  last time  "+lastTime);
 
             }
@@ -111,6 +109,10 @@ public class mvtCtrlNetwork : MonoBehaviour
         {
             if (MaxReached)
             {
+
+                lastTime = Time.time;
+
+                Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
 
             }
             rightTilt = rotation;

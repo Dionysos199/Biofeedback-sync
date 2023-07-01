@@ -161,7 +161,7 @@ public class mvtCtrlNetwork : MonoBehaviour
 
                 Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
                 
-                transform.Rotate(new Vector3(0, 2*roll,yaw) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(0,0,yaw) * rotationSpeed * Time.deltaTime);
                 break;
             default:
                 break;

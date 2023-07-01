@@ -5030,8 +5030,9 @@ MonoBehaviour:
   controlDevice: 0
   keySteps: 0.1
   sensorValues: {x: 0, y: 0}
-  CameraController: {fileID: 7179605866414447210}
-  _camera: {fileID: 601280682790770752}
+  leftTilt: 0.5
+  rightTilt: 0.5
+  dt: 0
 --- !u!20 &4359697225852374693
 Camera:
   m_ObjectHideFlags: 0
@@ -5492,6 +5493,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &5714426232540367970
 GameObject:
@@ -6030,6 +6032,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &7179605866414447209
 AudioListener:
@@ -6054,9 +6057,9 @@ MonoBehaviour:
   UI: {fileID: 2386193688149472396}
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
-  r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_sphere: {x: 0, y: 0, z: 0, w: 0.5}
   r_radius: 0
-  r_box: {x: 2, y: 0, z: 0, w: 0.5}
+  r_box: {x: 0, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
   r_boxRound: 0.87
@@ -6084,6 +6087,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &7179605866414447211
 MonoBehaviour:
@@ -6422,6 +6426,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &8194277385833369651
 AudioListener:
@@ -6476,6 +6481,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &8229822578561908357
 MonoBehaviour:
@@ -6708,6 +6714,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &8382466444393748772
 GameObject:
@@ -7025,6 +7032,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!4 &8787665087903572607
 Transform:
@@ -7107,6 +7115,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
+  _mvtCtrlNetwork: {fileID: 0}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &9100091603030962114
 MonoBehaviour:

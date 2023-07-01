@@ -46,7 +46,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     private InputDevice rightController;
 
     public float leftTilt = 0.5f;
-    private float rightTilt = 0.5f;
+    public float rightTilt = 0.5f;
     private float phaseShift = 0;
 
     private bool MaxReached1;
@@ -112,7 +112,7 @@ public class mvtCtrlNetwork : MonoBehaviour
 
 
     float lastMeasure;
-    float dt;
+    public float dt;
     void CalculatePhaseSHift()
     {
         if (MaxReached1)

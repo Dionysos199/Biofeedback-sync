@@ -85,24 +85,26 @@ public class CameraController : SceneViewFilter
     void Awake()
     {
 
-        UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
+        //UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
     private void Update()
     {
 
         raymarchingMaterial.SetFloat("radius1", _mvtCtrlNetwork.leftTilt);
+        raymarchingMaterial.SetFloat("cubeSide", _mvtCtrlNetwork.rightTilt);
+
     }
     public void updateSphereRadius()
     {
     }
-    SignalProcessor signalProcessor = new SignalProcessor(20, true);
-    public void OnDataReceived(string data, UduinoDevice device)
-    {
-        float value = float.Parse(data);
-        signalProcessor.AddValue(value);
-        float n = signalProcessor.GetNormalized();
-    }
+    //SignalProcessor signalProcessor = new SignalProcessor(20, true);
+    //public void OnDataReceived(string data, UduinoDevice device)
+    //{
+    //    float value = float.Parse(data);
+    //    signalProcessor.AddValue(value);
+    //    float n = signalProcessor.GetNormalized();
+    //}
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (!raymarchingMaterial)
@@ -121,8 +123,8 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetColor("r_mainColor", r_color);
         Vector3 UIpos = UI.transform.position;
 
-        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z));
-        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x,UIpos.y,UIpos.z));
+        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x+_mvtCtrlNetwork.dt, UIpos.y, UIpos.z));
+        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x+_mvtCtrlNetwork.dt,UIpos.y,UIpos.z));
 
 
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);

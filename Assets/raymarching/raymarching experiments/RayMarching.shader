@@ -26,6 +26,8 @@
             uniform float4x4 r_cameraFrustum, r_cameraToWorld;
             uniform float4 r_box, r_sphere, r_sphere2;
             uniform float radius1;
+            uniform float cubeSide;
+
 
 
             uniform float r_boxRound, r_boxSphereSmooth, r_sphereIntersectSmooth;
@@ -106,7 +108,7 @@
             }
             float usersUI(float3 p) {
 
-                float Box1 = sdBox(p - r_box.xyz, r_box.www);
+                float Box1 = sdBox(p - r_box.xyz, cubeSide);
                 float sphere = sdSphere(p - r_sphere.xyz, radius1*2);
 
                 return opSU(sphere, Box1,2);

@@ -122,7 +122,6 @@ public class mvtCtrlNetwork : MonoBehaviour
 
             last_dt = dt;
             dt = Time.time - lastMeasure;
-            Debug.Log("breath again" + dt);
         }
 
         if (MaxReached2)
@@ -166,6 +165,8 @@ public class mvtCtrlNetwork : MonoBehaviour
                 yaw = math.abs(leftTilt - rightTilt);
 
                 Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
+
+                Debug.Log("breath again" + lerpDt);
 
                 transform.Rotate(new Vector3(0,0,yaw*dt) * rotationSpeed * Time.deltaTime);
                 break;

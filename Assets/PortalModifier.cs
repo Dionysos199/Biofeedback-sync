@@ -21,33 +21,39 @@ public class PortalModifier : MonoBehaviour
     void Start()
     {
         _renderer = GetComponent<Renderer>();
-        StartCoroutine(LerpValue(StartBrightness, EndBrightness));
+        //StartCoroutine(LerpValue(StartBrightness, EndBrightness));
+      
     }
 
-   
-    IEnumerator LerpValue(float StartBrightness, float EndBrightness) // changing from void function to Co Routine
-                                                                      // and call it in the start function instead of update
+    private void Update()
     {
-
-       if ( Vector3.Distance(player.position, SceneTransitionObject.position) <= TriggerDistance)
+        LerpValue();
+    }
+    //  void LerpValue(float StartBrightness, float EndBrightness) // changing from void function to Co Routine
+    void LerpValue()                                                                // and call it in the start function instead of update
+    {
+        float d = Vector3.Distance(player.position, this.transform.position);
+       if ( d  <= TriggerDistance)
         {
-            //Debug.Log("TriggerDistance reached");
-           float time = 0;
-           while(time < duration) // instead of "if"
-            {
-                float t = time / duration;
-                newBrightness = Mathf.Lerp(StartBrightness, EndBrightness,t);
+            newBrightness = d*d/50;//if d=14 d*d=196, 196/50=3.9 so brightness starts at 3.9 and decreases as d decreases
+            _renderer.material.SetFloat("_Brightness",newBrightness);
+            Debug.Log("TriggerDistance reached");
+            //float time = 0;
+           //while(time < duration) // instead of "if"
+           // {
+           //     float t = time / duration;
+           //     newBrightness = Mathf.Lerp(StartBrightness, EndBrightness,t);
            
 
-               // _renderer.sharedMaterial.SetFloat("_Brightness", newBrightness);
-                _renderer.material.SetFloat("_Brightness", newBrightness);
+           //    // _renderer.sharedMaterial.SetFloat("_Brightness", newBrightness);
+           //     _renderer.material.SetFloat("_Brightness", newBrightness*d/10);
 
-                time += Time.deltaTime;// instead of calling it before setting the new float value
-                yield return null;
-            }
+           //     time += Time.deltaTime;// instead of calling it before setting the new float value
+           //     yield return null;
+           // }
 
             //_renderer.sharedMaterial.SetFloat("_Brightness", newBrightness);
-             _renderer.material.SetFloat("_Brightness", newBrightness);
+            // _renderer.material.SetFloat("_Brightness", newBrightness);
 
 
             //old version instead of lerp function//

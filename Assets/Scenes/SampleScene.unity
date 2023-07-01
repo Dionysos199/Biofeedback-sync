@@ -2037,12 +2037,16 @@ MonoBehaviour:
   newBrightness: 0
   StartBrightness: 3.89
   EndBrightness: 0.24
-  TriggerDistance: 10
+  TriggerDistance: 13
   DecreaseValue: 0.5
-  time: 0
   duration: 5
-  player: {fileID: 485479306}
-  SceneTransitionObject: {fileID: 1801602300}
+  player: {fileID: 5926494623120792350}
+  SceneTransitionObject: {fileID: 1013865152}
+--- !u!4 &1013865152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2743594585072111210, guid: 9479970a401f7824f9e1c1f6d1f6dd1e, type: 3}
+  m_PrefabInstance: {fileID: 2743594585850860875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1207266189
 GameObject:
   m_ObjectHideFlags: 0
@@ -3075,11 +3079,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1801602300 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 937293236821067068, guid: 7cc4588f86ef71247911d695a2cd90fc, type: 3}
-  m_PrefabInstance: {fileID: 937293236728544685}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1882774953
 GameObject:
   m_ObjectHideFlags: 0

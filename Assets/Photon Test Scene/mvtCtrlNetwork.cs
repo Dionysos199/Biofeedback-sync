@@ -7,6 +7,8 @@ using Photon.Pun;
 using static UnityEngine.Rendering.DebugUI;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using System;
+using ExitGames.Client.Photon;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
@@ -43,15 +45,16 @@ public class mvtCtrlNetwork : MonoBehaviour
     private InputDevice leftController;
     private InputDevice rightController;
 
-    private float leftTilt = 0.5f;
+    public float leftTilt = 0.5f;
     private float rightTilt = 0.5f;
     private float phaseShift = 0;
 
     private bool MaxReached1;
     private bool MaxReached2;
 
-    CameraController CameraController;
-    public GameObject _camera;
+
+    private InputDevice headsetDevice;
+    private Quaternion lastRotation;
 
 
     // Start is called before the first frame update
@@ -61,13 +64,21 @@ public class mvtCtrlNetwork : MonoBehaviour
     }
     void Start()
     {
-        CameraController =_camera. GetComponent<CameraController>();
+        lastRotation = Quaternion.identity;
 
     }
+  
+
+  
+        // Invoke the event and pass the eventData to all registered listeners
+      
+    
 
     // Update is called once per frame
     void Update()
     {
+
+      
         //ReadInput();
         Move();
     }
@@ -81,8 +92,9 @@ public class mvtCtrlNetwork : MonoBehaviour
             {
                 i++;
 
-                Debug.Log("leftRotation  " + rotation + " max reached" + MaxReached + i);
-            }
+              }
+            Debug.Log("leftRotation  " + rotation + " max reached" + MaxReached + i);
+ 
             leftTilt = rotation;
             MaxReached1 = MaxReached;
         }
@@ -101,25 +113,34 @@ public class mvtCtrlNetwork : MonoBehaviour
 
     float lastMeasure;
     float dt;
-    void Move()
+    void CalculatePhaseSHift()
     {
-        if (MaxReached1 )
+        if (MaxReached1)
         {
-
-
             dt = Time.time - lastMeasure;
-
             Debug.Log("breath again" + dt);
         }
 
         if (MaxReached2)
         {
-
             lastMeasure = Time.time;
-
         }
-        //CameraController.r_sphere.x = Mathf.Lerp(CameraController.r_sphere.x,dt,5);
+    }
+    Vector3 headRotation ()
+    {
+        var head = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.Head, head);
 
+
+        // Try to get the rotation feature from the headset device
+        head[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out Quaternion headRotation);
+        return (headRotation.eulerAngles);
+    }
+    void Move()
+    {
+   
+        //CameraController.r_sphere.x = Mathf.Lerp(CameraController.r_sphere.x,dt,5);
+        CalculatePhaseSHift();
         float pitch = 0;
         float yaw = 0;
         float roll=0;
@@ -136,9 +157,11 @@ public class mvtCtrlNetwork : MonoBehaviour
               //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
                 //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
                 roll = math.abs( leftTilt - rightTilt);
-                Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
+                yaw = math.abs(leftTilt - rightTilt);
 
-                transform.Rotate(new Vector3(0, 0, roll) * rotationSpeed * Time.deltaTime);
+                Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
+                
+                transform.Rotate(new Vector3(0, 2*roll,yaw) * rotationSpeed * Time.deltaTime);
                 break;
             default:
                 break;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Uduino;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using static UnityEngine.Rendering.DebugUI;
 
 [ExecuteInEditMode]
@@ -13,6 +14,8 @@ public class CameraController : SceneViewFilter
     public float r_maxDistance;
     public Vector3 r_modInterval;
     public Vector4 r_sphere;
+    public float r_radius;
+
     public Vector4 r_box;
     public Vector4 r_sphere2;
     public float r_boxSphereSmooth;
@@ -47,6 +50,8 @@ public class CameraController : SceneViewFilter
     public float r_reflectionIntensity;
     public float r_environmentIntensity;
     public Cubemap r_reflectionCube;
+
+    public mvtCtrlNetwork _mvtCtrlNetwork;
 
     [SerializeField]
     private Shader r_shader;
@@ -83,17 +88,20 @@ public class CameraController : SceneViewFilter
         UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
-    SignalProcessor signalProcessor= new SignalProcessor(20,true);
-    public void OnDataReceived(string data, UduinoDevice device)
+    private void Update()
     {
 
+        raymarchingMaterial.SetFloat("radius1", _mvtCtrlNetwork.leftTilt);
+    }
+    public void updateSphereRadius()
+    {
+    }
+    SignalProcessor signalProcessor = new SignalProcessor(20, true);
+    public void OnDataReceived(string data, UduinoDevice device)
+    {
         float value = float.Parse(data);
         signalProcessor.AddValue(value);
-        float n= signalProcessor.GetNormalized();
-        Debug.Log("nnnnnnnnnnnnn"+n);
-        raymarchingMaterial.SetFloat("radius1", n);
-
-
+        float n = signalProcessor.GetNormalized();
     }
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {

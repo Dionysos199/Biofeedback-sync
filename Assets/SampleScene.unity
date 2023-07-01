@@ -2433,7 +2433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: ManagerState
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: presentExtentionsMap.keys.Array.size
@@ -5030,6 +5030,7 @@ MonoBehaviour:
   controlDevice: 0
   keySteps: 0.1
   sensorValues: {x: 0, y: 0}
+  CameraController: {fileID: 7179605866414447210}
   _camera: {fileID: 601280682790770752}
 --- !u!20 &4359697225852374693
 Camera:
@@ -5462,6 +5463,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -5999,6 +6001,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -6052,6 +6055,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -6389,6 +6393,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -6442,6 +6447,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -6673,6 +6679,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -6989,6 +6996,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11
@@ -7070,6 +7078,7 @@ MonoBehaviour:
   r_maxDistance: 150
   r_modInterval: {x: 12, y: 12, z: 0}
   r_sphere: {x: -2, y: 0, z: 0, w: 0.5}
+  r_radius: 0
   r_box: {x: 2, y: 0, z: 0, w: 0.5}
   r_sphere2: {x: 0, y: 0, z: 0, w: 0}
   r_boxSphereSmooth: 0.11

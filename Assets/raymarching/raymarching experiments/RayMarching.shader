@@ -107,7 +107,7 @@
             float usersUI(float3 p) {
 
                 float Box1 = sdBox(p - r_box.xyz, r_box.www);
-                float sphere = sdSphere(p - r_sphere.xyz, radius1/100);
+                float sphere = sdSphere(p - r_sphere.xyz, radius1*2);
 
                 return opSU(sphere, Box1,2);
             }

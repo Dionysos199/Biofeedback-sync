@@ -112,13 +112,16 @@ public class mvtCtrlNetwork : MonoBehaviour
 
 
     float lastMeasure;
-    public float dt;
+    float dt;
+    float last_dt;
+    public float lerpDt;
     void CalculatePhaseSHift()
     {
         if (MaxReached1)
         {
-            float last_dt = dt;
-            dt =Mathf.Lerp(last_dt,dt, (Time.time - lastMeasure));
+
+            last_dt = dt;
+            dt = Time.time - lastMeasure;
             Debug.Log("breath again" + dt);
         }
 
@@ -126,6 +129,8 @@ public class mvtCtrlNetwork : MonoBehaviour
         {
             lastMeasure = Time.time;
         }
+
+        lerpDt = Mathf.Lerp(last_dt, dt, (Time.time - lastMeasure));
     }
     Vector3 headRotation ()
     {

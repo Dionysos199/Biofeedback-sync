@@ -107,7 +107,7 @@ public class mvtCtrlNetwork : MonoBehaviour
         {
 
 
-           float dt = Time.time - lastMeasure;
+            dt = Time.time - lastMeasure;
 
             Debug.Log("breath again" + dt);
         }

@@ -29,7 +29,8 @@ public class PortalModifier : MonoBehaviour
 
        if ( Vector3.Distance(player.position, SceneTransitionObject.position) <= TriggerDistance)
         {
-            _renderer.material.SetFloat("Brightness", StartBrightness);
+            //_renderer.material.SetFloat("_Brightness", StartBrightness);
+            _renderer.sharedMaterial.SetFloat("_Brightness", StartBrightness);
 
            Debug.Log("Brightness gets decreased");
            float delta = (StartBrightness - DecreaseValue) * Time.deltaTime;

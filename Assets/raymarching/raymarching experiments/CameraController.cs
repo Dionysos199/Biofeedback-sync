@@ -122,9 +122,9 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
         raymarchingMaterial.SetColor("r_mainColor", r_color);
         Vector3 UIpos = UI.transform.position;
-
-        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x+_mvtCtrlNetwork.lerpDt, UIpos.y, UIpos.z));
-        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x-_mvtCtrlNetwork.lerpDt,UIpos.y,UIpos.z));
+        Vector3 right= _mvtCtrlNetwork.gameObject.transform.right;
+        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z)+_mvtCtrlNetwork.lerpDt* new Vector4( right.x, right.y,right.z)/2);
+        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x-_mvtCtrlNetwork.lerpDt/2,UIpos.y,UIpos.z) - _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z)/2);
 
 
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);

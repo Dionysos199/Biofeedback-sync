@@ -2433,7 +2433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: ManagerState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
       propertyPath: presentExtentionsMap.keys.Array.size
@@ -5032,7 +5032,7 @@ MonoBehaviour:
   sensorValues: {x: 0, y: 0}
   leftTilt: 0.5
   rightTilt: 0.5
-  dt: 0
+  lerpDt: 0
 --- !u!20 &4359697225852374693
 Camera:
   m_ObjectHideFlags: 0
@@ -5539,7 +5539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6247787973424759458}
   m_LocalRotation: {x: 0.06932497, y: 0.0012788337, z: -0.009548988, w: 0.9975476}
-  m_LocalPosition: {x: -0.0019, y: -0.5785, z: 0.2476}
+  m_LocalPosition: {x: 0.001, y: -0.939, z: 0.037}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

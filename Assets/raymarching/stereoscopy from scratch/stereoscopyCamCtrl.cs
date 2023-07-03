@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Uduino;
 using UnityEngine;
@@ -7,9 +7,8 @@ using static UnityEngine.Rendering.DebugUI;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
-public class CameraController : SceneViewFilter
+public class stereoscopyCamCtrl : SceneViewFilter
 {
-    public Transform UI;
     private Material r_material;
     public float r_maxDistance;
     public Vector3 r_modInterval;
@@ -51,7 +50,6 @@ public class CameraController : SceneViewFilter
     public float r_environmentIntensity;
     public Cubemap r_reflectionCube;
 
-    public mvtCtrlNetwork _mvtCtrlNetwork;
 
     [SerializeField]
     private Shader r_shader;
@@ -67,7 +65,7 @@ public class CameraController : SceneViewFilter
             return r_material;
         }
     }
-  
+
     private Camera r_camera;
     public Camera raymarchingCamera
     {
@@ -88,23 +86,8 @@ public class CameraController : SceneViewFilter
         //UduinoManager.Instance.OnDataReceived += OnDataReceived; //Create the Delegate
 
     }
-    private void Update()
-    {
 
-        raymarchingMaterial.SetFloat("radius1", _mvtCtrlNetwork.leftTilt);
-        raymarchingMaterial.SetFloat("cubeSide", _mvtCtrlNetwork.rightTilt);
-
-    }
-    //public void updateSphereRadius()
-    //{
-    //}
-    //SignalProcessor signalProcessor = new SignalProcessor(20, true);
-    //public void OnDataReceived(string data, UduinoDevice device)
-    //{
-    //    float value = float.Parse(data);
-    //    signalProcessor.AddValue(value);
-    //    float n = signalProcessor.GetNormalized();
-    //}
+ 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (!raymarchingMaterial)
@@ -121,10 +104,8 @@ public class CameraController : SceneViewFilter
         raymarchingMaterial.SetInt("r_maxIterations", r_maxIterations);
         raymarchingMaterial.SetFloat("r_accuracy", r_accuracy);
         raymarchingMaterial.SetColor("r_mainColor", r_color);
-        Vector3 UIpos = UI.transform.position;
-        Vector3 right= _mvtCtrlNetwork.gameObject.transform.right;
-        raymarchingMaterial.SetVector("r_sphere", r_sphere + new Vector4(UIpos.x, UIpos.y, UIpos.z)+_mvtCtrlNetwork.lerpDt* new Vector4( right.x, right.y,right.z)/2);
-        raymarchingMaterial.SetVector("r_box", r_box+ new Vector4(UIpos.x-_mvtCtrlNetwork.lerpDt/2,UIpos.y,UIpos.z) - _mvtCtrlNetwork.lerpDt * new Vector4(right.x, right.y, right.z)/2);
+        raymarchingMaterial.SetVector("r_sphere", r_sphere);
+        raymarchingMaterial.SetVector("r_box", r_box);
 
 
         raymarchingMaterial.SetVector("r_light", r_light ? r_light.forward : Vector3.down);

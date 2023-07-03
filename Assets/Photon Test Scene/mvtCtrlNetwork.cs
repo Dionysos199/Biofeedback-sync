@@ -166,7 +166,7 @@ public class mvtCtrlNetwork : MonoBehaviour
 
                 Debug.Log("breath again" + lerpDt);
 
-                transform.Rotate(new Vector3(0,0,yaw*dt) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(0,0,yaw*lerpDt) * rotationSpeed * Time.deltaTime);
                 break;
             default:
                 break;

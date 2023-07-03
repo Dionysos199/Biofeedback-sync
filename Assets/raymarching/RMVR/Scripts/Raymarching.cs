@@ -1,4 +1,4 @@
-﻿//MIT License
+﻿//IT License
 //
 //Copyright (c) 2018 http://hubpaul.com
 //Originally developped at and for http://www.small-studio.io/
@@ -338,7 +338,7 @@ public class Raymarching : MonoBehaviour
         Shader.SetGlobalTexture("_Perlin3DTxt", Resources.Load<Texture3D>("Textures/Perlin3DTxt"));
         //Imad
       //  VROn = (PlayerSettings.virtualRealitySupported && UnityEngine.XR.XRDevice.isPresent);
-        if (VROn) PlayerSettings.stereoRenderingPath = StereoRenderingPath.SinglePass;
+        if (VROn) PlayerSettings.stereoRenderingPath = StereoRenderingPath.MultiPass;
     }
 
     void Start()

@@ -50,7 +50,6 @@ public class ReadSensor : MonoBehaviour
         //Debug.Log(data); // Use the data as you want !
         
         float x= MathF.Abs((float.Parse(data) - 910))/10;
-        Debug.Log(value);
         //  _light.intensity = float.Parse(data) / 200;
        // _light.intensity = x;
 

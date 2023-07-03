@@ -21,6 +21,8 @@ Shader "Auctux/RayMarching"
             #pragma fragment frag
             #pragma target 3.0
 
+#pragma multi_compile_instancing STEREO_INSTANCING
+
          float4 _LeftEyeColor;
          float4 _RightEyeColor;
 
@@ -279,7 +281,7 @@ Shader "Auctux/RayMarching"
 
 
 
-                         return lerp(fixed4(col * (1.0 - result.w) + result.xyz * result.w , 1.0), fixed4(col * (1.0 - result.w) + result.xyz * result.w, 1.0), unity_StereoEyeIndex);
+                         return fixed4(col * (1.0 - result.w) + result.xyz * result.w , 1.0);
 
                      }
                      ENDCG

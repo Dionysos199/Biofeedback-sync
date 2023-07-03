@@ -91,7 +91,7 @@ public class player : MonoBehaviour
     {
         if (AIpv)
         {
-            AIpv.RPC("ReceiveString", RpcTarget.All,singleton.text, ActorNm);
+            AIpv.RPC("ReceiveString", RpcTarget.All, singleton.text, ActorNm);
 
         }
         else

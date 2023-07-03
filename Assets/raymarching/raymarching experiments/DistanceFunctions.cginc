@@ -158,7 +158,7 @@ float2 stalagmite(float3 pos) {
 	float3 vp = float3(fmod(abs(pos.x), 3.0), pos.y, fmod(pos.z + 1.5, 3.0) - 1.5);
 	float2 id = float2(floor(pos.x / 3.0), floor((pos.z + 1.5) / 3.0));
 	float fid = id.x * 11.1 + id.y * 31.7;
-	float fy = frac(fid * 1.312 + _Time.y * 0.02);
+	float fy = frac(fid * 1.312 + _Time.z * 0.02);
 	float y = -1.0 + 4.0 * fy;
 	float3  rad = float3(0.7, 1.0 + 0.5 * sin(fid), 0.7);
 	rad -= 0.1 * (sin(pos.x * 3.0) + sin(pos.y * 4.0) + sin(pos.z * 5.0));

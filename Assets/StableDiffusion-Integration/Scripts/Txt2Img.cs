@@ -15,8 +15,10 @@ namespace StableDiffusion
 {
     public class Txt2Img : SDBase
     {
+         public  string mergedText;
         [SerializeField, Label("Txt2img Input"), Space(10)]
-        protected Txt2ImgPayload txt2imgInput = new Txt2ImgPayload();
+     
+        public Txt2ImgPayload txt2imgInput;
 
         [Space(10)]
         public bool useRenderers = true;
@@ -443,8 +445,9 @@ namespace StableDiffusion
 
         public bool saveImageToFile = false;
 
-        public Txt2ImgPayload()
+        public Txt2ImgPayload(string _prompt)
         {
+            prompt = _prompt;
             Initialize();
         }
 

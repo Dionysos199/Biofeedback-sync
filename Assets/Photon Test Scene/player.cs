@@ -4,6 +4,8 @@ using UnityEngine;
 
 using Uduino;
 using Whisper;
+using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class player : MonoBehaviour
 {
@@ -13,7 +15,6 @@ public class player : MonoBehaviour
     PhotonView AIpv;
     PhotonView MyPV;
     int ActorNm;
-
     SignalProcessor processor;
 
     // Start is called before the first frame update
@@ -35,21 +36,24 @@ public class player : MonoBehaviour
     }
 
     // Add auto reset function
-
+    string lastText="";
     private void Update()
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
-       
-        if (singleton.text!="")
+      
+        string text= singleton.text;
+        if (text != lastText)
         {
             if (MyPV.IsMine)
             {
                 sendText();
 
             }
-
         }
+        lastText = text;
+
+        
     }
     void readSensor(string data, UduinoDevice device)
     {

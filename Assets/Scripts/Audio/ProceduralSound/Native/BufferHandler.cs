@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 
 // Source: https://www.youtube.com/watch?v=FQnDgMuqqEw
-namespace Embodiment.Native
+namespace ProceduralSound.Native
 {
     [StructLayout(LayoutKind.Sequential)]
     internal unsafe struct BufferHandler<T> : IDisposable where T : unmanaged

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Embodiment
+namespace ProceduralSound
 {
     public class SynthOut : MonoBehaviour
     {

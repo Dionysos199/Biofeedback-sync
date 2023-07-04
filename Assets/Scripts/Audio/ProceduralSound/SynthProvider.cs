@@ -1,7 +1,7 @@
-using Embodiment.Native;
+using ProceduralSound.Native;
 using UnityEngine;
 
-namespace Embodiment
+namespace ProceduralSound
 {
     public abstract class SynthProvider : MonoBehaviour
     {

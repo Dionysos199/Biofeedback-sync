@@ -1,6 +1,6 @@
 using System;
 
-namespace Embodiment.Native
+namespace ProceduralSound.Native
 {
     public struct SynthBuffer : INativeObject
     {

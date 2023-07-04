@@ -1,4 +1,4 @@
-namespace Embodiment.Native
+namespace ProceduralSound.Native
 {
     public interface INativeObject
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Embodiment.Native
+namespace ProceduralSound.Native
 {
     public class NativeBox<T> : IDisposable where T : INativeObject
     {

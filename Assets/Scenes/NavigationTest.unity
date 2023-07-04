@@ -1020,7 +1020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724253898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.438209, y: -0.19274259, z: 1.054779}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1034,7 +1034,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724253898}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724253898}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6aafc2e0af984a6a807f3be193b8791, type: 3}
   m_Name: 
@@ -1149,6 +1149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7a2eb6898294e04a5fcec09b6740e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - name: UnderwaterMove
+    clip: {fileID: 8300000, guid: c356c57ba68e9466e9cfcc64340199ee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: UnderwaterAmbience
+    clip: {fileID: 8300000, guid: f3527cb3d7e9f4783bc6184c2240b7f3, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  masterVolume: 0
 --- !u!1001 &778808423
 PrefabInstance:
   m_ObjectHideFlags: 0

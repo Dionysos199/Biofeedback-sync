@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d031381c86967cf4caba47715834141a, type: 3}
   m_Name: SD Config
   m_EditorClassIdentifier: 
-  address: 
-  username: 
-  password: 
-  fixRotation: 1
+  address: 141.100.233.171:4000
+  username: fuels
+  password: sleuf
   stable_diffusion_webui_rembg: 0

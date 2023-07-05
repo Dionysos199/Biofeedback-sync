@@ -357,8 +357,8 @@ public static class SpeechManager
     private static string GetStyledVoiceString(string message)
     {
         var ssml = @$"<speak version='1.0' xml:lang='de-DE' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='http://www.w3.org/2001/mstts'>
-                        <voice name='de-DE-ConradNeural'>
-                            <mstts:express-as style=""cheerful"">
+                        <voice name='en-US-AriaNeural'>
+                            <mstts:express-as style=""friendly"">
                 {message}
                 </mstts:express-as>
             </voice>

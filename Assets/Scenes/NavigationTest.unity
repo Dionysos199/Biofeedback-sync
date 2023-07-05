@@ -1895,8 +1895,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1492904481}
   - component: {fileID: 1492904482}
-  - component: {fileID: 1492904480}
   - component: {fileID: 1492904479}
+  - component: {fileID: 1492904480}
+  - component: {fileID: 1492904483}
+  - component: {fileID: 1492904484}
+  - component: {fileID: 1492904485}
   m_Layer: 0
   m_Name: ProceduralSoundSource
   m_TagString: Untagged
@@ -1911,7 +1914,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492904478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8835e1435e75440859f6293771cb540a, type: 3}
   m_Name: 
@@ -1929,7 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6aafc2e0af984a6a807f3be193b8791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
+  amplitude: 0.2
   frequency: 261.62
 --- !u!4 &1492904481
 Transform:
@@ -2043,6 +2046,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1492904483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492904478}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823769c3a117a47239ff5e586895049e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.2
+  frequency: 261.62
+--- !u!114 &1492904484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492904478}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7079af51392394613a224c49995d966d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.2
+  frequency: 261.62
+--- !u!114 &1492904485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492904478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62920378d3e7344e0bf0cb8d0b9e6e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.2
+  frequency: 261.62
+  inverted: 0
 --- !u!1 &1499360114
 GameObject:
   m_ObjectHideFlags: 0

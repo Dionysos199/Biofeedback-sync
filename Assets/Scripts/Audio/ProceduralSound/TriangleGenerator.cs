@@ -4,7 +4,7 @@ using Unity.Mathematics;
 
 namespace ProceduralSound
 {
-    public class SineGenerator : Oscillator
+    public class TriangleGenerator : Oscillator
     {
         private void Start()
         {
@@ -20,7 +20,7 @@ namespace ProceduralSound
         [BurstCompile]
         private static float GetPhaseValue(double phase, float amplitude)
         {
-            return (float) (math.sin(phase * 2 * math.PI) * amplitude);
+            return (float) ((2 / math.PI) * math.asin(math.sin(phase * 2 * math.PI)) * amplitude);
         }
     }
 }

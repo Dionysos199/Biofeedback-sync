@@ -2067,7 +2067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1182827616
 Transform:
   m_ObjectHideFlags: 0
@@ -3857,7 +3857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &608862600072153517
 Transform:
   m_ObjectHideFlags: 0
@@ -4498,7 +4498,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4559741
+  near clip plane: 0.45597434
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5239,7 +5239,7 @@ MonoBehaviour:
   leftFlipper: {fileID: 5714426232540367970}
   rightFlipper: {fileID: 9179531693949551959}
   tiltRange: 30
-  navigationMode: 1
+  navigationMode: 0
   thrust: 0.7
   rotationSpeed: 10
   controlDevice: 0
@@ -5432,7 +5432,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4295937
+  near clip plane: 0.42959547
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5536,7 +5536,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4559741
+  near clip plane: 0.45597434
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5595,7 +5595,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4581089
+  near clip plane: 0.45810318
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -5708,7 +5708,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &5714426232540367970
 GameObject:
@@ -6182,7 +6182,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.46024382
+  near clip plane: 0.46024346
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -6247,7 +6247,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &7179605866414447209
 AudioListener:
@@ -6458,7 +6458,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.45810667
+  near clip plane: 0.4581057
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -6641,7 +6641,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!81 &8194277385833369651
 AudioListener:
@@ -6696,7 +6696,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &8229822578561908357
 MonoBehaviour:
@@ -6929,7 +6929,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!1 &8382466444393748772
 GameObject:
@@ -6947,7 +6947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8416959670680879076
 Transform:
   m_ObjectHideFlags: 0
@@ -7017,7 +7017,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.46024373
+  near clip plane: 0.46024346
   far clip plane: 500
   field of view: 58.71551
   orthographic: 0
@@ -7247,7 +7247,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!4 &8787665087903572607
 Transform:
@@ -7330,7 +7330,7 @@ MonoBehaviour:
   r_reflectionIntensity: 0.34
   r_environmentIntensity: 1.91
   r_reflectionCube: {fileID: 8900000, guid: 9f4dab980db4eb041b2b5f976ffa7934, type: 3}
-  _mvtCtrlNetwork: {fileID: 0}
+  _mvtCtrlNetwork: {fileID: 4307669588363549181}
   r_shader: {fileID: 4800000, guid: 5a529432c084c7743861e7db5c6f297b, type: 3}
 --- !u!114 &9100091603030962114
 MonoBehaviour:

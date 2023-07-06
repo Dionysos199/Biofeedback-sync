@@ -74,7 +74,7 @@ public class player : MonoBehaviour
         float inputValue = float.Parse(data);
 
         processor.AddValue(inputValue);
-        sensorValue = processor.GetAmplitude();
+        sensorValue = processor.GetNormalized();
         processor.extremum();
    
 

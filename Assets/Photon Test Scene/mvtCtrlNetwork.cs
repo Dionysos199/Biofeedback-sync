@@ -31,7 +31,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     // Navigation control
     [Header("Navigation Settings")]
     public NavigationMode navigationMode;
-    public enum NavigationMode { Differential, PhaseShift }
+    public enum NavigationMode { Amplitude, PhaseShift }
     public float thrust = 0.7f;
     public float rotationSpeed = 10f;
 
@@ -55,6 +55,9 @@ public class mvtCtrlNetwork : MonoBehaviour
 
     private InputDevice headsetDevice;
     private Quaternion lastRotation;
+
+    Vector3 headRotation1;
+    Vector3 headRotation2;
 
 
     // Start is called before the first frame update
@@ -84,7 +87,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     }
     int i;
     [PunRPC]
-    void ReceiveFloat(float rotation, bool MaxReached,int playerIndex)
+    void ReceiveFloat(float sensorValue, bool MaxReached,Vector3 headRotation,int playerIndex)
     {
         if (playerIndex == 1)
         {
@@ -98,25 +101,26 @@ public class mvtCtrlNetwork : MonoBehaviour
                 dt = Time.time - lastTime;
 
                 Debug.Log("last dt " + last_dt + "    dt " + dt +"   time "+Time.time+"  last time  "+lastTime);
+              
+               
 
             }
-            Debug.Log("leftRotation  " + rotation + " max reached" + MaxReached + i);
+            Debug.Log("headRotation:" + sensorValue);
+            headRotation1 = headRotation;
+            Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
-            leftTilt = rotation;
+            leftTilt = sensorValue;
             MaxReached1 = MaxReached;
         }
         if (playerIndex == 2)
         {
             if (MaxReached)
             {
-
                 lastTime = Time.time;
-
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
-
             }
-            rightTilt = rotation;
-
+            headRotation2 = headRotation;
+            rightTilt = sensorValue;
         }
         Debug.Log(playerIndex);
     }
@@ -128,19 +132,11 @@ public class mvtCtrlNetwork : MonoBehaviour
     float last_dt;
     public float lerpDt;
 
-    Vector3 headRotation ()
-    {
-        var head = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.Head, head);
 
-
-        // Try to get the rotation feature from the headset device
-        head[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out Quaternion headRotation);
-        return (headRotation.eulerAngles);
-    }
     void Move()
     {
-
+        
+        
         Debug.Log("  lerped Dt " + lerpDt);
         lerpDt = Mathf.Lerp(last_dt, dt, (Time.time - lastTime));
 
@@ -150,23 +146,32 @@ public class mvtCtrlNetwork : MonoBehaviour
         // Set rotation
         switch (navigationMode)
         {
-            case NavigationMode.Differential:
+            case NavigationMode.Amplitude:
                 pitch = 1 - leftTilt - rightTilt;
                 yaw = rightTilt - leftTilt;
 
                 transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
-              //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
+                //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
                 //yaw = Mathf.Cos((phaseShift - 90) * Mathf.Deg2Rad);
+
+                Vector3 averageRotation = (headRotation1 + headRotation2) / 2;
+                Debug.Log("headRotation1: " + headRotation1 + ", headRotation2: " + headRotation2);
+
                 roll = math.abs( leftTilt - rightTilt);
                 yaw = math.abs(leftTilt - rightTilt);
 
                 Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
 
                 Debug.Log("breath again" + lerpDt);
+                //Vector3 resultRotation = averageRotation;
+                //transform.rotation= Quaternion.Euler(averageRotation);
+                //transform.Rotate(new Vector3(0, 0, yaw * lerpDt) * rotationSpeed * Time.deltaTime);
+                //Vector3 rotationDifference = averageRotation - transform.rotation.eulerAngles;
+                transform.rotation = Quaternion.Euler(averageRotation);
+                transform.Rotate(new Vector3(0, 0, yaw * lerpDt) * rotationSpeed * Time.deltaTime);
 
-                transform.Rotate(new Vector3(0,0,yaw*lerpDt) * rotationSpeed * Time.deltaTime);
                 break;
             default:
                 break;

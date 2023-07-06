@@ -6,11 +6,13 @@ using Uduino;
 using Whisper;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class player : MonoBehaviour
 {
+    Vector3 headRotation;
     float rotationStep=.1f;
-    float rotation;
+    float sensorValue;
     PhotonView pv;
     PhotonView AIpv;
     PhotonView MyPV;
@@ -41,7 +43,7 @@ public class player : MonoBehaviour
     {
         UduinoDevice board = UduinoManager.Instance.GetBoard("Arduino");
         UduinoManager.Instance.Read(board, "readSensors"); // Read every frame the value of the "readSensors" function on our board.
-      
+        headRotation = HeadRotation();
         string text= singleton.text;
         if (text != lastText)
         {
@@ -55,12 +57,24 @@ public class player : MonoBehaviour
 
         
     }
+    Vector3 HeadRotation()
+    {
+        var head = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.Head, head);
+        Quaternion rotation = new Quaternion();
+        if (head.Count > 0)
+        {
+            head[0].TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out Quaternion headRotation);
+            rotation = headRotation;
+        }
+        return (rotation.eulerAngles);
+    }
     void readSensor(string data, UduinoDevice device)
     {
         float inputValue = float.Parse(data);
 
         processor.AddValue(inputValue);
-        rotation = processor.GetNormalized();
+        sensorValue = processor.GetAmplitude();
         processor.extremum();
    
 
@@ -107,7 +121,7 @@ public class player : MonoBehaviour
     {
         if (pv)
         {
-            pv.RPC("ReceiveFloat", RpcTarget.All, rotation,processor.MaxReached(), ActorNm);
+            pv.RPC("ReceiveFloat", RpcTarget.All, sensorValue,processor.MaxReached(),headRotation, ActorNm);
 
         }
         else

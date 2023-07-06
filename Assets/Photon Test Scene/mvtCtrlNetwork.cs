@@ -149,7 +149,7 @@ public class mvtCtrlNetwork : MonoBehaviour
             case NavigationMode.Amplitude:
                 pitch = 1 - leftTilt - rightTilt;
                 yaw = rightTilt - leftTilt;
-
+                Debug.Log(" leftTilt " + leftTilt);
                 transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:

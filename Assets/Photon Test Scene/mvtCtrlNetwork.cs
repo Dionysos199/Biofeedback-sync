@@ -169,7 +169,7 @@ public class mvtCtrlNetwork : MonoBehaviour
                 //transform.rotation= Quaternion.Euler(averageRotation);
                 //transform.Rotate(new Vector3(0, 0, yaw * lerpDt) * rotationSpeed * Time.deltaTime);
                 //Vector3 rotationDifference = averageRotation - transform.rotation.eulerAngles;
-                transform.rotation = Quaternion.Euler(averageRotation);
+                //transform.rotation = Quaternion.Euler(averageRotation);
                 transform.Rotate(new Vector3(0, 0, yaw * lerpDt) * rotationSpeed * Time.deltaTime);
 
                 break;

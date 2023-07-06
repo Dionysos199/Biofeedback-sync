@@ -2164,7 +2164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1182827616
 Transform:
   m_ObjectHideFlags: 0
@@ -3954,7 +3954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &608862600072153517
 Transform:
   m_ObjectHideFlags: 0
@@ -5336,7 +5336,7 @@ MonoBehaviour:
   leftFlipper: {fileID: 5714426232540367970}
   rightFlipper: {fileID: 9179531693949551959}
   tiltRange: 30
-  navigationMode: 0
+  navigationMode: 1
   thrust: 0.7
   rotationSpeed: 50
   controlDevice: 0
@@ -5851,7 +5851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6247787973424759458}
   m_LocalRotation: {x: 0.06932497, y: 0.0012788337, z: -0.009548988, w: 0.9975476}
-  m_LocalPosition: {x: -0.131, y: -0.728, z: 0.043}
+  m_LocalPosition: {x: -0.1308, y: -0.7553, z: 0.2384}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7044,7 +7044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8416959670680879076
 Transform:
   m_ObjectHideFlags: 0

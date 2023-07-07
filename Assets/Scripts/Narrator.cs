@@ -9,13 +9,12 @@ public class Narrator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Intro());
+        SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you through this little adventure to your innerself");
     }
 
-    IEnumerator Intro() 
+    // Update is called once per frame
+    void Update()
     {
-        yield return new WaitForSeconds(5f);
-        SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you through this little adventure to your innerself");
         
     }
 }

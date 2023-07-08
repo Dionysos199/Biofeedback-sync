@@ -13,7 +13,7 @@ namespace Whisper.Samples
         public MicrophoneRecord microphoneRecord;
         public bool streamSegments = true;
         public bool printLanguage = true;
-
+        public float time_till_start_recording;
 
 
         [Header("UI")]
@@ -25,13 +25,13 @@ namespace Whisper.Samples
         public Toggle translateToggle;
         public ScrollRect scroll;
 
+
         private string _buffer;
 
         private void Awake()
         {
             button.onClick.AddListener(OnButtonPressed);
-
-            OnButtonPressed();
+            Invoke("OnButtonPressed", time_till_start_recording);
 
             languageDropdown.value = languageDropdown.options
                 .FindIndex(op => op.text == whisper.language);
@@ -48,9 +48,9 @@ namespace Whisper.Samples
         }
 
 
-        private void OnButtonPressed()
+        public void OnButtonPressed()
         {
-
+            print("start recording");
             if (!microphoneRecord.IsRecording)
                 microphoneRecord.StartRecord();
 

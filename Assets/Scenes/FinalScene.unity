@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.06010892, g: 0.06365255, b: 0.050899774, a: 1}
+  m_IndirectSpecularColor: {r: 0.058712445, g: 0.06223475, b: 0.05023729, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3354,6 +3354,7 @@ GameObject:
   - component: {fileID: 1807122099}
   - component: {fileID: 1807122098}
   - component: {fileID: 1807122102}
+  - component: {fileID: 1807122103}
   m_Layer: 0
   m_Name: BubbleParent
   m_TagString: Untagged
@@ -3432,7 +3433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807122097}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: 13.47, y: 0.27257, z: -0.14342}
+  m_LocalPosition: {x: 2.03, y: 2.28, z: -0.1}
   m_LocalScale: {x: 0.2525984, y: 0.2525984, z: 0.2525984}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3452,6 +3453,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a74e06a87f8dc54faa583997cc3fc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticalSpeed: 0.5
+  horizontalRange: 1.48
+  horizontalSpeed: 1.48
+--- !u!114 &1807122103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807122097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dff561bef5fb84a8bf864f7a2cbf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headTransform: {fileID: 1075099056175212780}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1882774953
 GameObject:
   m_ObjectHideFlags: 0
@@ -5188,7 +5206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283568535965736062, guid: c54275f929b04db4a8d1524792fcfdc7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c54275f929b04db4a8d1524792fcfdc7, type: 3}

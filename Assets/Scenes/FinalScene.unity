@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.14990756, g: 0.15661818, b: 0.13860977, a: 1}
+  m_IndirectSpecularColor: {r: 0.06010892, g: 0.06365255, b: 0.050899774, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: a1eb647e65adb5d41a7c2145ae303b19, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0646b9b8b74865d45b45a5bbeba76d70, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 7b2c03f7fcb1c06489e0b20a7041f2df, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1208,7 +1208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 126918487427396887, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9392996
+      value: 0.93930054
       objectReference: {fileID: 0}
     - target: {fileID: 1699046999130121652, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -1280,7 +1280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708661553059669338, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9392997
+      value: 0.93930095
       objectReference: {fileID: 0}
     - target: {fileID: 5907524048041773847, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
@@ -4500,7 +4500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405416641776464470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8.78}
+  m_LocalPosition: {x: 0, y: 0, z: -31.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

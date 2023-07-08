@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Narrator : MonoBehaviour
+public class Narrator2 : MonoBehaviour
 {
 
     void Start()
     {
         StartCoroutine(Intro());
-        
+
     }
 
     IEnumerator Intro()
     {
         yield return new WaitForSeconds(5f);
-        SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you through this little adventure to your innerself");
+        SpeechManager.StartReadMessage("Welcome to our experience");
     }
-   
+
 }
 

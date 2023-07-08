@@ -42,10 +42,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: -1.82
-    - _Density: 14.6
-    - _Speed: 0.98
-    - _Strength: -21.99
+    - _Brightness: 1.1
+    - _Density: -4.98
+    - _Speed: 0.4
+    - _Strength: 33.36
     m_Colors:
     - _Color: {r: 15.346172, g: 45.98856, b: 47.15056, a: 0}
   m_BuildTextureStacks: []

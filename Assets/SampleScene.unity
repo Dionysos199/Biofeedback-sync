@@ -5844,7 +5844,7 @@ MonoBehaviour:
   leftFlipper: {fileID: 5714426232540367970}
   rightFlipper: {fileID: 9179531693949551959}
   tiltRange: 30
-  navigationMode: 1
+  navigationMode: 0
   thrust: 0.7
   rotationSpeed: 50
   controlDevice: 0

@@ -46,22 +46,22 @@ public class SignalProcessor
     // Method overload for int values
     private void ResetAutoRange(float value)
     {
-       
-            // Reset range boundaries
-            _lowerLimit = _upperLimit = value;
 
-            // Reset buffer if using reading-based min/max to prevent out-of-bound readings:
-            // _buffer.Clear();
+        // Reset range boundaries
+        _lowerLimit = _upperLimit = value;
 
-            // Reset waveform processing
-            _lastValue = 0;
-            _lastDiff = 0;
-            _lastMin = 0;
-            _lastMax = 0;
-            _frequencyCount = 0;
-            _maxCount = 1;
-            _lastCount = 0;
-        
+        // Reset buffer if using reading-based min/max to prevent out-of-bound readings:
+        // _buffer.Clear();
+
+        // Reset waveform processing
+        _lastValue = 0;
+        _lastDiff = 0;
+        _lastMin = 0;
+        _lastMax = 0;
+        _frequencyCount = 0;
+        _maxCount = 1;
+        _lastCount = 0;
+
 
         // Unset reset flag
         _resetAutoRange = false;
@@ -73,7 +73,7 @@ public class SignalProcessor
     {
         if (_resetAutoRange)
         {
-        ResetAutoRange(value);
+            ResetAutoRange(value);
         }
         // Add value to queue
         _buffer.Enqueue(value);
@@ -87,12 +87,25 @@ public class SignalProcessor
         var smoothedValue = _buffer.Average();
 
         UpdateLimits(smoothedValue);
-        
+
 
         // Run peak detection
-       // DetectPeak();
+        // DetectPeak();
     }
+    private Queue<float> _upperLimitBuffer = new Queue<float>(50);
+    int _upperLimitBufferSize = 200;
+    void BufferUpperLimit(float value) { 
+    // Add value to queue
+    _upperLimitBuffer.Enqueue(value);
 
+        // Remove surplus item(s) from buffer
+        while (_upperLimitBuffer.Count > _upperLimitBufferSize)
+            _upperLimitBuffer.Dequeue();
+
+        _upperLimit = _upperLimitBuffer.Max();
+
+        Debug.Log(_upperLimit + "  upper Limit");
+        }
     void UpdateLimits(float value)
     {
 

@@ -109,7 +109,7 @@ public class mvtCtrlNetwork : MonoBehaviour
             headRotation1 = headRotation;
             Debug.Log("leftRotation  " + sensorValue + " max reached" + MaxReached + i);
  
-            leftTilt = sensorValue;
+            leftTilt = 2*sensorValue-1;
             MaxReached1 = MaxReached;
         }
         if (playerIndex == 2)
@@ -120,7 +120,7 @@ public class mvtCtrlNetwork : MonoBehaviour
                 Debug.Log("last dt " + last_dt + "    dt " + dt + "   time " + Time.time + "  last time  " + lastTime);
             }
             headRotation2 = headRotation;
-            rightTilt = sensorValue;
+            rightTilt = 2*sensorValue-1;
         }
         Debug.Log(playerIndex);
     }
@@ -147,11 +147,15 @@ public class mvtCtrlNetwork : MonoBehaviour
         switch (navigationMode)
         {
             case NavigationMode.Amplitude:
-                pitch = 1 - leftTilt - rightTilt;
-                yaw = rightTilt - leftTilt;
+
+                roll = rightTilt -leftTilt;
+                pitch = Mathf.Abs( roll)/2+(rightTilt+leftTilt)/2;
+
+                //Mathf.Abs(roll);
                 Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
-                Debug.Log("pitch  " + pitch + "  yaw  " + yaw);
-                transform.Rotate(new Vector3(pitch, yaw, 0) * rotationSpeed * Time.deltaTime);
+                Debug.Log("pitch  " + pitch + "  roll  " + roll);
+ 
+                transform.Rotate(new Vector3(pitch, roll, yaw) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);
@@ -164,8 +168,8 @@ public class mvtCtrlNetwork : MonoBehaviour
                 yaw = math.abs(leftTilt - rightTilt);
 
                 Debug.Log("right"+rightTilt + "left" + leftTilt + "roll  " + roll );
-
                 Debug.Log("breath again" + lerpDt);
+
                 //Vector3 resultRotation = averageRotation;
                 //transform.rotation= Quaternion.Euler(averageRotation);
                 //transform.Rotate(new Vector3(0, 0, yaw * lerpDt) * rotationSpeed * Time.deltaTime);

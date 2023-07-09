@@ -92,30 +92,46 @@ public class SignalProcessor
         // Run peak detection
         // DetectPeak();
     }
-    private Queue<float> _upperLimitBuffer = new Queue<float>(50);
-    int _upperLimitBufferSize = 200;
-    void BufferUpperLimit(float value) { 
+    private Queue<float> _LimitBuffer = new Queue<float>(50);
+    int _LimitBufferSize = 20;
+    void BufferLowerLimit(float value) { 
     // Add value to queue
-    _upperLimitBuffer.Enqueue(value);
+    _LimitBuffer.Enqueue(value);
 
         // Remove surplus item(s) from buffer
-        while (_upperLimitBuffer.Count > _upperLimitBufferSize)
-            _upperLimitBuffer.Dequeue();
+        while (_LimitBuffer.Count > _LimitBufferSize)
+            _LimitBuffer.Dequeue();
 
-        _upperLimit = _upperLimitBuffer.Max();
+        _lowerLimit = _LimitBuffer.Min();
+
+        Debug.Log(_lowerLimit + "  lower Limit");
+        }
+    void BufferUpperLimit(float value)
+    {
+        // Add value to queue
+        _LimitBuffer.Enqueue(value);
+
+        // Remove surplus item(s) from buffer
+        while (_LimitBuffer.Count > _LimitBufferSize)
+            _LimitBuffer.Dequeue();
+
+        _upperLimit = _LimitBuffer.Max();
 
         Debug.Log(_upperLimit + "  upper Limit");
-        }
+    }
     void UpdateLimits(float value)
     {
 
         //Debug.Log("lower limit" + _lowerLimit);
-        if (value < _lowerLimit)
-        {
-            _lowerLimit = value;
-        //    Debug.Log("value"+value+"lower limit" + _lowerLimit);
-        }
+        //if (value < _lowerLimit)
+        //{
 
+        //    _lowerLimit = value;
+        ////    Debug.Log("value"+value+"lower limit" + _lowerLimit);
+        //}
+
+        BufferLowerLimit(value);
+        Debug.Log("_lowerLimit Limit  " + _lowerLimit + "  upper Limit  " + _upperLimit);
         if (value > _upperLimit)
         {
             _upperLimit = value;

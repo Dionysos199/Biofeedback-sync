@@ -131,7 +131,7 @@ public class mvtCtrlNetwork : MonoBehaviour
     float dt;
     float last_dt;
     public float lerpDt;
-    public float pitchSensitivity=.1f;
+    public float Sensitivity=.1f;
 
     void Move()
     {
@@ -155,7 +155,7 @@ public class mvtCtrlNetwork : MonoBehaviour
                 Debug.Log(" leftTilt " + leftTilt+ "  rightTilt " + rightTilt);
                 Debug.Log("pitch  " + pitch + "  roll  " + roll);
                 Debug.Log("rollangle"+ Mathf.Abs(transform.rotation.eulerAngles.x));
-                transform.Rotate(new Vector3(pitch*pitchSensitivity, roll, yaw) * rotationSpeed * Time.deltaTime);
+                transform.Rotate(new Vector3(pitch*Sensitivity,Sensitivity* roll, yaw) * rotationSpeed * Time.deltaTime);
                 break;
             case NavigationMode.PhaseShift:
                 //  pitch = Mathf.Sin(phaseShift * Mathf.Deg2Rad);

@@ -7,6 +7,8 @@ using Whisper;
 using UnityEngine.Events;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using static UnityEngine.Rendering.DebugUI;
+using System;
 
 public class player : MonoBehaviour
 {
@@ -71,7 +73,17 @@ public class player : MonoBehaviour
     }
     void readSensor(string data, UduinoDevice device)
     {
-        float inputValue = float.Parse(data);
+
+        float inputValue;
+        bool success = float.TryParse(data, out inputValue );
+        if (success)
+        {
+            Console.WriteLine($"Converted '{data}' to {inputValue}.");
+        }
+        else
+        {
+            Console.WriteLine($"Attempted conversion of '{data ?? "<null>"}' failed.");
+        }
 
         processor.AddValue(inputValue);
         sensorValue = processor.GetNormalized();

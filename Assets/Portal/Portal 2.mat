@@ -42,7 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 1.1
+    - _Brightness: 1.31
     - _Density: -4.98
     - _Speed: 0.4
     - _Strength: 33.36

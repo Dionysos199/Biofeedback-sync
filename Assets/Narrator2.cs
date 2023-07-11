@@ -14,7 +14,7 @@ public class Narrator2 : MonoBehaviour
     IEnumerator Intro()
     {
         yield return new WaitForSeconds(5f);
-        SpeechManager.StartReadMessage("Welcome to our experience");
+        SpeechManager.StartReadMessage("Welcome to Scene 2");
     }
 
 }

@@ -14,7 +14,7 @@ public class Narrator : MonoBehaviour
     IEnumerator Intro()
     {
         yield return new WaitForSeconds(5f);
-        SpeechManager.StartReadMessage("Hello and welcome to our experience! I will guide you through this little adventure to your innerself");
+        SpeechManager.StartReadMessage("Welcome to the end");
     }
    
 }

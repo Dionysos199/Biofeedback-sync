@@ -154,7 +154,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67114024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea4fb3d22aa7789458ce922501d7ffb2, type: 3}
   m_Name: 
@@ -172,7 +172,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &67114027
 AudioListener:
@@ -1225,15 +1225,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699046999130121652, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.9017011
+      value: 0.901701
       objectReference: {fileID: 0}
     - target: {fileID: 2518401604498676932, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.97829854
+      value: 0.9782984
       objectReference: {fileID: 0}
     - target: {fileID: 4659109249590237615, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.97829854
+      value: 0.97829866
       objectReference: {fileID: 0}
     - target: {fileID: 4764956775630714900, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: m_RootOrder
@@ -1297,7 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907524048041773847, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: near clip plane
-      value: 0.90170115
+      value: 0.901701
       objectReference: {fileID: 0}
     - target: {fileID: 6748879549379588702, guid: c1347c3f7be56654d84f01b6a5072cfe, type: 3}
       propertyPath: m_PositionInput.m_Reference
@@ -2213,7 +2213,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1009259495
 MonoBehaviour:
@@ -3368,6 +3368,7 @@ GameObject:
   - component: {fileID: 1807122098}
   - component: {fileID: 1807122102}
   - component: {fileID: 1807122103}
+  - component: {fileID: 1807122104}
   m_Layer: 0
   m_Name: BubbleParent
   m_TagString: Untagged
@@ -3445,14 +3446,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807122097}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: 6.28, y: 2.28, z: 3.69}
-  m_LocalScale: {x: 0.2525984, y: 0.2525984, z: 0.2525984}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 2.5, y: -3.4, z: 27.6}
+  m_LocalScale: {x: 0.25259867, y: 0.25259852, z: 0.25259852}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 136938325}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!114 &1807122102
 MonoBehaviour:
@@ -3483,6 +3484,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headTransform: {fileID: 1075099056175212780}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &1807122104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807122097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b38ac9683de72b4aa62ad82ec144b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToInstantiate: {fileID: 1807122097}
+  offset: {x: 0, y: 0, z: 1}
 --- !u!1 &1882774953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4535,7 +4550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405416641776464470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.11}
+  m_LocalPosition: {x: 6.6, y: 0, z: -3.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

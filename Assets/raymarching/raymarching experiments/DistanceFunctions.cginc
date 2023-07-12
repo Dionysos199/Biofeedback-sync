@@ -175,3 +175,52 @@ float2 stalagmite(float3 pos) {
 	return res;
 
 }
+
+float2x2 rot (float a)
+{ float c=cos(a),s=sin(a); return float2x2(c,-s,s,c); }
+
+float gyroid (float3 seed)
+{ return dot(sin(seed),cos(seed.yzx)); }
+
+// noise
+float fbm (float3 seed)
+{
+    float result = 0., a = .5;
+    for (int i = 0; i < 8; ++i, a/=2.)
+    {
+        result += abs(gyroid(seed/a))*a;
+    }
+    return result;
+}
+
+// signed distance function
+float chargedCloud(float3 p, float glow)
+{
+    float dist = 100.;
+    
+    // cloud
+    float3 seed = p*.4;
+    seed.z += _Time.y*.1;
+    float noise = fbm(seed);
+    dist = length(p) - .5 - noise*1.;
+    
+    // lightning
+    const float count = 4.;
+    float a = 1.;
+    float t = _Time.y*.2 + noise*.5;
+    float r = .1+.2*sin(_Time.y+p.x);
+    float shape = 100.;
+    for (float i = 0.; i < count; ++i)
+    {
+        p.xz =mul(rot(t/a),p.xz);
+		
+        p.xy =mul(rot(t/a),p.xy);
+        p = abs(p)-r*a;
+        shape = min(shape, length(p.xz));
+        a /= 1.8;
+    }
+    glow += .002/shape;
+    dist = min(dist, shape);
+    
+    return dist*.8;
+}

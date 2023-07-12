@@ -19,6 +19,11 @@
             #include "UnityCG.cginc"
             #include "DistanceFunctions.cginc"
 
+            // reduces if too slow
+            uniform const float frames = 3.;
+
+            // global
+            uniform float glow;
 
             sampler2D _MainTex;
             uniform fixed4 r_mainColor;
@@ -129,10 +134,12 @@
                        //float fractal1 = DE(p-_mandleBrot1.xyz,_power);
 
                     //   return MandleBrot1;
-                float ui = usersUI(p);
-                return opU(ui,stalagmite(p));
-              //  return boolBoxSphere(p);
-               
+  //              float ui = usersUI(p);
+//                return opU(ui,stalagmite(p));
+                   return chargedCloud(p, glow);
+
+
+
                   }
 
                   float3 getNormal(float3 p) {

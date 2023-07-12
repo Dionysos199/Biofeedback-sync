@@ -63,7 +63,11 @@ float opI(float d1, float d2)
 {
 	return max(d1, d2);
 }
-
+//mod
+float mod(float x, float y)
+{
+  return x - y * floor(x/y);
+}
 // Mod Position Axis
 float pMod1 (inout float p, float size)
 {
@@ -224,3 +228,19 @@ float chargedCloud(float3 p, float glow)
     
     return dist*.8;
 }
+
+
+
+
+float D(float3 p)
+{ float2x2  M = mul(float2x2(6,8,-8,6),.1);
+float i,t,s,j,T,S;
+	for(i=1e2, t = p.y+8.; i > 1.; i/=4. )
+		p.zx = mul(p.zx ,M),
+		p.y += i*.8,
+		p = i*.8 - abs( mod(p,i+i) - i ),
+		s = min(p.x,min(p.y,p.z)),
+              t = (t < s) ? t : s;
+        j = (t < s) ? j : i;
+}
+

@@ -134,9 +134,9 @@
                        //float fractal1 = DE(p-_mandleBrot1.xyz,_power);
 
                     //   return MandleBrot1;
-  //              float ui = usersUI(p);
-//                return opU(ui,stalagmite(p));
-                   return chargedCloud(p, glow);
+             float ui = usersUI(p);
+            return opU(ui,stalagmite(p));
+                  // return chargedCloud(p, glow);
 
 
 
